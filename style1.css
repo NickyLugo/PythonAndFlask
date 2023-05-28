@@ -12,7 +12,9 @@ body
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: #23242a;
+    background: #000000;
+    /*background: #23242a;*/
+    /*background: linear-gradient(135deg,#71b7e6, #252c);*/
 }
 .box
 {
@@ -64,7 +66,7 @@ body
     left: -50%;
     width: 380px;
     height: 420px;
-    background: linear-gradient(0deg, transparent, transparent, #93ff27, #93ff27, #93ff27);
+    background: linear-gradient(0deg, transparent, transparent, #08f7ef, #08f7ef, #08f7ef);
     z-index: 1;
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
@@ -78,7 +80,7 @@ body
     left: -50%;
     width: 380px;
     height: 420px;
-    background: linear-gradient(0deg, transparent, transparent, #93ff27, #93ff27, #93ff27);
+    background: linear-gradient(0deg, transparent, transparent, #08f7ef, #08f7ef, #08f7ef);
     z-index: 1;
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
