@@ -20,7 +20,7 @@ body
  max-width: 700px;
  width: 100%;
  background: #fff;
- padding: 25px 30px;
+ padding: 15px 20px;
  border-radius: 6px;
 }
 .container .title
@@ -88,6 +88,7 @@ form .gender-details .gender-title
 form .gender-details .category
 {
     display: flex;
+    padding: 25px;
     width: 80%;
     margin: 14px 0;
     justify-content: space-between;

@@ -9,10 +9,15 @@
 body
 {
     display: flex;
-    justify-content: center;
+    justify-content: right;
+    padding-right: 165px;
+    /*justify-content: center;*/
     align-items: center;
-    min-height: 100vh;
-    background: #000000;
+    min-height: 90vh;
+    background: url(../Flask_S181/img/img2bg.jpg) no-repeat, center top;
+    background-size: cover;
+    height: 100vh;
+    /*background: #000000;*/
     /*background: #23242a;*/
     /*background: linear-gradient(135deg,#71b7e6, #252c);*/
 }
