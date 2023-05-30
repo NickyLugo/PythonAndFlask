@@ -21,7 +21,7 @@
   {
     place-items: center;
     font-family: var(--font-family);
-    background:linear-gradient(to right, #9796f0, #fbc7d4);
+    background:linear-gradient(to right, #52f1e6, #cde053);
     overflow: hidden;
   }
   .contianer {
