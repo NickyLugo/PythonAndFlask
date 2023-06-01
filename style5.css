@@ -9,10 +9,13 @@
 body{
     min-height: 100vh;
     display: flex;
+    padding-left: 185px;
     align-items: center;
     justify-content: center;
 /*     background: #4070f4; */
-    background:linear-gradient(to right, #9593f5, #8afd6a);
+    /* background:linear-gradient(to right, #9593f5, #8afd6a); */
+    background: url(../Flask_S181/img/img7bg.jpg) no-repeat, center top;
+    background-size: cover;
 }
 .container{
     position: relative;

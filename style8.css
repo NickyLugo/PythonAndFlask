@@ -10,15 +10,18 @@ body
 {
     display: flex;
     justify-content: center;
+    padding-left: 25px;
     /*justify-content: center;*/
     align-items: center;
     min-height: 90vh;
-    background: #3d3742;
+    /* background: #3d3742; */
+    background: url(../Flask_S181/img/img8bg.jpg) no-repeat, center top;
     background-size: cover;
 }
 .box
 {
     position: relative;
+    top: 125px;
     width: 380px;
     height: 420px;
     background: #1c1c1c;

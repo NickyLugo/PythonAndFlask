@@ -9,11 +9,12 @@
 body
 {
     display: flex;
-    justify-content: center;
+    justify-content: left;
+    padding-left: 225px;
     /*justify-content: center;*/
     align-items: center;
     min-height: 90vh;
-    background: url(../Flask_S181/img/img3bg.jpg) no-repeat, center top;
+    background: url(../Flask_S181/img/img6bg.jpeg) no-repeat, center top;
     background-size: cover;
     height: 100vh;
     /*background: #000000;*/

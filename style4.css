@@ -17,14 +17,23 @@
     margin: 0;
     box-sizing: border-box;
   }
-  html,  body 
+/*   html,  body 
   {
     place-items: center;
     font-family: var(--font-family);
-    background:linear-gradient(to right, #52f1e6, #cde053);
-    overflow: hidden;
+    padding-right: 165px;
+    background: url(../Flask_S181/img/img9bg.jpg) no-repeat, center bottom;
+    background-size: cover;
+  } */
+  body 
+  {
+    place-items: center;
+    font-family: var(--font-family);
+    padding-right: 165px;
+    background: url(../Flask_S181/img/img10bg.jpg) no-repeat, center bottom;
+    background-size: cover;
   }
-  .contianer {
+  .container {
     width: max-content;
     height: max-content;
     position: relative;
