@@ -1,22 +1,22 @@
 """
 **Almacén de bebidas**
 
-Objeto:Bebida
+Objeto:almacen
 
-Parametros: 
+Parametros por registro (tupla): 
 1) id_Bebida
 2) nombreBebida
 3) clasificacionBebida (ej. Agua, Bebidas Azucaradas, Bebidas energeticas)
 4) marcaBebida
 5) precioBebida
 
-Operaciones:
+Funciones o métodos CRUD:
 alta()
 baja()
 actualizacion()
 mostrar()
 
-Funciones:
+Funciones o métodos adicionales:
 A) Calcular Precio promedio de bebidas { ejemplo. precioPromedio = [ sum(precios)/cantidad ] }
 B) Cantidad de bebidas de una Marca {Contar marcaBebida}
 C) Cantidad por clasificacion {print( "Agua: " + X + ", Bebidas Azucaradas: " + Y ) }
