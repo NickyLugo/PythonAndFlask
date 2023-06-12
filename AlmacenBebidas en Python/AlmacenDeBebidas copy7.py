@@ -4,7 +4,7 @@ class AlmacenDeBebidas:
 
     def menu(self):
         while True:
-            print("---- Menú ----")
+            print("------ Menú ------")
             print("1) AltaBD")
             print("2) BajaBD")
             print("3) Consulta")
