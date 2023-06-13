@@ -1,11 +1,11 @@
-# Todo lo relacionado con el servidor
+#todo lo relacionado con del servidor va aquí
 from flask import Flask
 
 app=Flask(__name__)
 
 @app.route('/')
 def index():
-        return "Hola Mundo Flask"
+    return "Hola mundo Flask"
 
-if __name__ == '__main__':
-        app.run(port=5000)
+if __name__ =='__main__':
+    app.run(port=5000)
