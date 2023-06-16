@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<!-- <html lang="en"> -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Albums</title>
+</head>
+<body>
+    <!-- espacios de los huevones <br> -->
+    <br>
+    <br>
+    <h1>Gestión de albums</h1>
+    <br>
+    <!-- Action pendiente -->
+    <!-- ve a la ruta y ¿Por donde se va a enviar? por el método POST, se define -->
+    <form action="/guardar" method="POST">
+        <input type="text" name="txtTitulo" placeholder="Escribe el título del album">
+        <input type="text" name="txtArtista" placeholder="Escribe el artista">
+        <input type="number" name="txtAnio" placeholder="Escribe el año">
+
+        <!-- Para evitar que no tenga funcionalidad, agregamos el tipo de botón = submit -->
+        <button type="submit">Guardar</button>
+    </form>
+</body>
+</html>
