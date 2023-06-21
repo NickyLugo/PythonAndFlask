@@ -12,6 +12,17 @@
     <br>
     <h1>Gestión de albums</h1>
     <br>
+    <!-- Código de Jinja, desde una lista mensajes -->
+    {% with mensajes = get_flashed_messages() %}
+    <!-- Boolean, solo queremos saber si hay mensajes -->
+        {% if mensajes %}
+            {%for msj in mensajes%}
+            <!-- ECO, muy similar a como se usa blade -->
+                <h3>{{msj}}</h3>
+            {%endfor%}
+        {% endif %}
+    {% endwith %}
+    <br>
     <!-- Action pendiente -->
     <!-- ve a la ruta y ¿Por donde se va a enviar? por el método POST, se define -->
     <form action="/guardar" method="POST">

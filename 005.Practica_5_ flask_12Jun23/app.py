@@ -1,7 +1,8 @@
 #todo lo relacionado con del servidor va aquí
 
 #importación del framework
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, flash
+#flash se ocupa para poder ...
 from flask_mysqldb import MySQL
 
 #inicialización del APP (servidor)
@@ -12,6 +13,7 @@ app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
 app.config['MYSQL_PASSWORD']=''
 app.config['MYSQL_DB']='dbflask'
+app.secret_key='mysecretkey'
 mysql = MySQL(app)
 # si es posible conectarse a dos bases de datos
 
@@ -23,18 +25,42 @@ def index():
     #return "Hola mundo Flask"
     return render_template('index.html')
 
+'''
+@app.route('/otra')
+def index2():
+    #return "Hola mundo Flask"
+    return render_template('index.html')
+
+'''
 #Método de trabajo POST que trabaja por detrás de lo que ve el usuario
 #Recibe un envío de un formulario RUTA http:localhost:5000/ guardar tipo POST para insert
 @app.route('/guardar', methods=['POST'])
 def guardar():
     if request.method == 'POST':
-        titulo = request.form['txtTitulo']
-        artista = request.form['txtArtista']
-        anio = request.form['txtAnio']
-        print (titulo, artista, anio)
+
+        #Pasamos a variables el contenido de los input, les ponemos una "V" de variable
+        Vtitulo = request.form['txtTitulo']
+        Vartista = request.form['txtArtista']
+        Vanio = request.form['txtAnio']
+        print (Vtitulo, Vartista, Vanio)
         
+        #Objeto "CS" de tipo cursor, se va a declarar
+        CS = mysql.connection.cursor() 
+        #dos parametros el primero es el insert de los datos y el segundo parametro son las variables
+        CS.execute('insert into tbalbums(titulo, artista, anio) values(%s, %s, %s)',(Vtitulo, Vartista, Vanio))
+
+        #Le decimos a mySQL que queremos hacer una confirmación del cambio
+        mysql.connection.commit()
+
     """ return "se guardó en la BD " """
-    return 'los datos llegaron amigo ;)'
+    '''return 'los datos llegaron amigo ;)'''
+
+    #se ocupará para que se pueda mandar el mensaje que informa al usuario que quedó guardado.
+    flash('El album fue agregado correctamente amig@')
+    #se ocupará para que una vez que guardemos nos regrese al formulario
+    return redirect(url_for('index'))
+
+    #Código Jinja {% %}
 
 @app.route('/eliminar')
 def eliminar():
