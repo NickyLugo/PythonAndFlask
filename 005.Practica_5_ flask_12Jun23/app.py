@@ -63,6 +63,22 @@ def guardar():
 
     #Código Jinja {% %}
 
+@app.route("/mostrar-registros")
+def mostrar():
+    cs = mysql.connection.cursor() 
+#    cs.execute('SELECT * FROM tbalbums')
+    cs.execute("SELECT id, Titulo, Anio FROM tbalbums WHERE Artista LIKE 'Bon%'")
+#    for (id, Titulo, Artista, Anio) in cs:
+#        print("{}, {}, {} was published on {}".format(id, Titulo, Artista, Anio))
+
+#    for (id, Titulo, Anio) in cs:
+#        print("{}, {}, {}".format(id, Titulo, Anio))
+
+    rows = cs.fetchall()
+
+    cs.close()
+    return render_template("mostrar-registros.html", albumesRecords = rows)
+
 @app.route('/eliminar')
 def eliminar():
     return "se eliminó en la BD "
