@@ -17,6 +17,7 @@ app.config['MYSQL_USER']='root'
 #Desktop
 app.config['MYSQL_PASSWORD']='root'
 app.config['MYSQL_DB']='db_clinica_S181'
+esquema = 'db_clinica_S181'
 #Se agrega para evitar RuntimeError: The session is unavailable because no secret key was set.
 app.secret_key='mysecretkey'
 mysql = MySQL(app)
@@ -74,11 +75,24 @@ def registrarPaciente():
         
         #Objeto "cs" de tipo cursor, se va a declarar
         cs = mysql.connection.cursor()
-        #dos parametros el primero es el insert de los datos y el segundo parametro son las variables
-        # cs.execute('insert into tbalbums(titulo, artista, anio) values(%s, %s, %s)',(vTitulo, vArtista, vAnio))
+
+        if vGenero == 'Masculino':
+            vGenero = 1
+        elif vGenero == 'Femenino':
+            vGenero = 2
+        else: 
+            vGenero = 3
+        
+        print("Los datos recogidos desde front, MODIFICADOS son: {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(vNombreCompleto, vFechaNacimiento, vEmail, vTelefono, vGenero, vOcupacion, vTipoSangre, vPeso, vAltura, vTipoIdentificacion, vNumeroIdentificacion, vDireccionPaciente, vPersonaContacto, vParentescoPaciente, vTelefonoFamiliar, vEnfermedadesCronicas, vAlergias, vAntecedentesFamiliares, vDatosMedicos))
+
+        #generar query
+        # vQuery = "INSERT INTO tb_persona (nombre_completo, email, ocupacion, tipo_de_sangre, id_genero) VALUES(%s,%s,%s,%s,%s,%s,%d)",()
+        vQuery = "INSERT INTO {}.tb_persona (nombre_completo, email, ocupacion, tipo_de_sangre, id_genero) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',{})".format(esquema, vNombreCompleto, vEmail, vOcupacion, vTipoSangre, vGenero)
+        print("El query generado es: {}".format(vQuery))
+        cs.execute(vQuery)
 
         #Le decimos a mySQL que queremos hacer una confirmación del cambio
-        # mysql.connection.commit()
+        mysql.connection.commit()
 
     #se ocupará para que se pueda mandar el mensaje que informa al usuario que quedó guardado.
     #se utiliza session.pop('_flashes', None) para borrar los mensajes enviados previamente con flash, esto dado que se guardan en la session
