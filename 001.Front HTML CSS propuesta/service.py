@@ -25,6 +25,10 @@ mysql = MySQL(app)
 #Declaración de la inicialización de las rutas. Ésta le pertenece a http://localhost:5000
 #Ruta '/' es la ruta principal
 #El archivo principal de las interfaces debe tener el 'index'
+@app.route('/')
+def iniciarLogin():
+    return render_template('login.html')
+
 @app.route('/menu-principal')
 def iniciarMenuPrincipal():
     return render_template('menu-principal.html')
