@@ -12,52 +12,54 @@
 
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <title>Consultar expediente</title>
+    <title>Registrar perfil paciente</title>
 </head>
 
 <body>
     <div class="container">
-        <header>Expediente del paciente</header>
-        <form action="menu-principal.html">
-
-
-            <div class="details personal">
-                <span class="title">Ingresa el número de expediente</span>
-                <div class="input-field">
-                    <label>Número de expediente</label>
-                    <input type="text" placeholder="Número de expediente" required>
-                </div>
-            </div>
-            <div class="button">
-                <input type="submit" formaction="menu-principal.html" value="Consultar expediente">
-            </div>
+        <br>
+        <!-- Código de Jinja, desde una lista mensajes -->
+        {% with mensajes = get_flashed_messages() %}
+        <!-- Boolean, solo queremos saber si hay mensajes -->
+            {% if mensajes %}
+                {%for msj in mensajes%}
+                <!-- ECO, muy similar a como se usa blade -->
+                    <center><h2 style="color: red;">{{msj}}</h2></center>
+                {%endfor%}
+            {% endif %}
+        {% endwith %}
+        <br>
+        <header>Perfil del paciente</header>
+        <form>
             <div class="details personal">
                 <span class="title">Información personal</span>
                 <div class="fields">
 
                     <div class="input-field">
                         <label>Nombre completo</label>
-                        <input type="text" placeholder="Ingrese nombre del paciente" >
+                        <input type="text" name="txtNombreCompleto" placeholder="Ingrese nombre del paciente" required>
                     </div>
 
                     <div class="input-field">
                         <label>Fecha de nacimiento</label>
-                        <input type="date" placeholder="Ingrese fecha de nacimiento paciente" >
+                        <input type="date" name="dateFechaNacimiento" placeholder="Ingrese fecha de nacimiento paciente"
+                            required>
                     </div>
 
                     <div class="input-field">
                         <label>Correo electrónico</label>
-                        <input type="email" placeholder="nombre@ejemplo.com" >
+                        <input type="email" name="txtEmail" placeholder="nombre@ejemplo.com" required>
                     </div>
 
                     <div class="input-field">
                         <label>Teléfono</label>
-                        <input type="number" placeholder="Número de teléfono del paciente" >
+                        <input type="text" name="txtTelefono" placeholder="Número de teléfono del paciente"
+                            required>
                     </div>
 
                     <div class="input-field">
                         <label>Genero</label>
-                        <select >
+                        <select name="txtGenero" required>
                             <option disabled selected>Seleccione</option>
                             <option>Masculino</option>
                             <option>Femenino</option>
@@ -67,22 +69,22 @@
 
                     <div class="input-field">
                         <label>Ocupación</label>
-                        <input type="text" placeholder="Ingrese la ocupación del paciente" >
+                        <input type="text" name="txtOcupacion" placeholder="Ingrese la ocupación del paciente" required>
                     </div>
 
                     <div class="input-field">
                         <label>Tipo de sangre</label>
-                        <input type="text" placeholder="Tipo de sangre" >
+                        <input type="text" name="txtTipoSangre" placeholder="Tipo de sangre" required>
                     </div>
 
                     <div class="input-field">
                         <label>Peso</label>
-                        <input type="text" placeholder="Peso del paciente" >
+                        <input type="text" name="txtPeso" placeholder="Peso del paciente" required>
                     </div>
 
                     <div class="input-field">
                         <label>Altura</label>
-                        <input type="text" placeholder="Altura del paciente">
+                        <input type="text" name="txtAltura" placeholder="Altura del paciente">
                     </div>
                 </div>
             </div>
@@ -92,12 +94,12 @@
 
                     <div class="input-field">
                         <label>Tipo de identificación</label>
-                        <input type="text" placeholder="Enter ID type" >
+                        <input type="text" name="txtTipoIdentificacion" placeholder="Enter ID type" required>
                     </div>
 
                     <div class="input-field">
                         <label>Número de identificación</label>
-                        <input type="number" placeholder="Enter ID number" >
+                        <input type="number" name="numberNumeroIdentificacion" placeholder="Enter ID number" required>
                     </div>
                 </div>
             </div>
@@ -107,24 +109,24 @@
 
                     <div class="input-field-dos">
                         <label>Dirección del paciente</label>
-                        <input type="text"
+                        <input type="text" name="txtDireccionPaciente"
                             placeholder="País, Estado, Municipio, Colonia, calle y número exterior, número interior"
-                            >
+                            required>
                     </div>
 
                     <div class="input-field">
                         <label>Persona de contacto</label>
-                        <input type="text" placeholder="Nombre de un familiar" >
+                        <input type="text" name="txtPersonaContacto" placeholder="Nombre de un familiar" required>
                     </div>
 
                     <div class="input-field">
                         <label>Parentesco con el paciente</label>
-                        <input type="text" placeholder="Paretesco con el paciente">
+                        <input type="text" name="txtParentescoPaciente" placeholder="Paretesco con el paciente">
                     </div>
 
                     <div class="input-field">
                         <label>Teléfono del familiar</label>
-                        <input type="text" placeholder="Teléfono del familiar" >
+                        <input type="text" name="txtTelefonoFamiliar" placeholder="Teléfono del familiar" required>
                     </div>
 
                 </div>
@@ -135,17 +137,17 @@
 
                     <div class="input-field">
                         <label>Enfermedades crónicas</label>
-                        <input type="text" placeholder="Ingrese si cuenta con alguna" >
+                        <input type="text" name="txtEnfermedadesCronicas" placeholder="Ingrese si cuenta con alguna" required>
                     </div>
 
                     <div class="input-field">
                         <label>Alergias</label>
-                        <input type="text" placeholder="Ingrese si cuenta con alguna" >
+                        <input type="text" name="txtAlergias" placeholder="Ingrese si cuenta con alguna" required>
                     </div>
 
                     <div class="input-field">
                         <label>Antecedentes familiares</label>
-                        <input type="text" placeholder="Ingrese si existe algun antecedente familiar" >
+                        <input type="text" name="txtAntecedentesFamiliares" placeholder="Ingrese si existe algun antecedente familiar" required>
                     </div>
                 </div>
 
@@ -154,13 +156,16 @@
 
                     <div class="input-field">
                         <label>Datos del Médico</label>
-                        <input type="text" placeholder="Nombre y cécula del Médico" >
+                        <input type="text" name="txtDatosMedico" placeholder="Nombre y cécula del Médico" required>
                     </div>
 
                 </div>
 
                 <div class="button">
-                    <input type="submit" formaction="menu-principal.html" value="Regresar" formnovalidate>
+                    <input type="submit" formaction="/menu-principal" value="Regresar" formnovalidate>
+                </div>
+                <div class="button">
+                    <input type="submit" formaction="/registrar-perfil-paciente" formmethod="POST" value="Registrar">
                 </div>
             </div>
         </form>
