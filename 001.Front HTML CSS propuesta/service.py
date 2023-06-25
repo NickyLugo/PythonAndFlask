@@ -77,6 +77,7 @@ def registrarPaciente():
         # mysql.connection.commit()
 
     #se ocupará para que se pueda mandar el mensaje que informa al usuario que quedó guardado.
+    #se utiliza session.pop('_flashes', None) para borrar los mensajes enviados previamente con flash, esto dado que se guardan en la session
     session.pop('_flashes', None)
     flash('El registro fue existoso.')
     # cs.close()
