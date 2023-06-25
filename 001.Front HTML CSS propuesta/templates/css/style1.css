@@ -14,7 +14,7 @@ body
     /*justify-content: center;*/
     align-items: center;
     min-height: 90vh;
-    background: url("../001.Front HTML CSS propuesta/img/img2bg.jpg") no-repeat, center top;
+    background: url("../img/img2bg.jpg") no-repeat, center top;
     background-size: cover;
     height: 100vh;
     /*background: #000000;*/

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="UTF-8">
+        <title>Actualizar médicos</title>
+        <link rel="stylesheet" href="../css/style2.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+<body>
+    <div class="container">
+        <div class="title">Administración de médicos</div>
+        <form action="#">
+            <div class="user-details">
+                <div class="input-box">
+                    <span class="details">Nombre completo</span>
+                    <!--<span class="details">
+                        <a href="#">Nombre completo</a>
+                    </span>-->
+                    <input type="text" placeholder="Apellido paterno, materno, nombre" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">RFC</span>
+                    <input type="text" placeholder="Ingrese RFC Doctor" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Cedula</span>
+                    <input type="text" placeholder="Ingrese cédula o Registro" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Correo electronico</span>
+                    <input type="text" placeholder="doctor@ejemplo.com" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Contraseña</span>
+                    <input type="text" placeholder="Ingrese una nueva contraseña" required>
+                </div>
+                <div class="input-box">
+                    <span class="details">Rol usuario</span>
+                    <input type="text" placeholder="Admin / Doctor / Interno" required>
+                </div>
+            </div>
+            <div class="gender-details">
+                <input type="radio" name="gender" id="dot-1">
+                <input type="radio" name="gender" id="dot-2">
+                <input type="radio" name="gender" id="dot-3">
+                <span class="gender-title">Genero</span>
+                <div class="category">
+                    <label for="dot-1">
+                        <span class="dot one"></span>
+                        <span class="gender">Masculino</span>
+                    </label>
+                    <label for="dot-2">
+                        <span class="dot two"></span>
+                        <span class="gender">Femenino</span>
+                    </label>
+                    <label for="dot-3">
+                        <span class="dot three"></span>
+                        <span class="gender">Prefiero no decir</span>
+                    </label>
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" value="Modificar (con RFC)">
+            </div>
+            <div class="button">
+                <input type="submit" formaction="menu-principal.html" value="Regresar" formnovalidate>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

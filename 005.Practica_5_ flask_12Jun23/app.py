@@ -10,8 +10,11 @@ app=Flask(__name__)
 
 # configuración de la conexión a base de datos.
 app.config['MYSQL_HOST']='localhost'
-app.config['MYSQL_USER']='root'
-app.config['MYSQL_PASSWORD']=''
+app.config['MYSQL_USER']='root' 
+#Laptop
+#app.config['MYSQL_PASSWORD']=''
+#Desktop
+app.config['MYSQL_PASSWORD']='root'
 app.config['MYSQL_DB']='dbflask'
 #Se agrega para evitar RuntimeError: The session is unavailable because no secret key was set.
 app.secret_key='mysecretkey'
