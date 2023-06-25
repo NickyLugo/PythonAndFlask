@@ -14,7 +14,7 @@ body{
     justify-content: center;
 /*     background: #4070f4; */
     /* background:linear-gradient(to right, #9593f5, #8afd6a); */
-    background: url(../Flask_S181/img/img7bg.jpg) no-repeat, center top;
+    background: url(../img/img7bg.jpg) no-repeat, center top;
     background-size: cover;
 }
 .container{
