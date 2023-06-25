@@ -73,9 +73,6 @@ def registrarPaciente():
         vDatosMedicos = request.form['txtDatosMedico']
         print("Los datos recogidos desde front son : {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(vNombreCompleto, vFechaNacimiento, vEmail, vTelefono, vGenero, vOcupacion, vTipoSangre, vPeso, vAltura, vTipoIdentificacion, vNumeroIdentificacion, vDireccionPaciente, vPersonaContacto, vParentescoPaciente, vTelefonoFamiliar, vEnfermedadesCronicas, vAlergias, vAntecedentesFamiliares, vDatosMedicos))
         
-        #Objeto "cs" de tipo cursor, se va a declarar
-        cs = mysql.connection.cursor()
-
         if vGenero == 'Masculino':
             vGenero = 1
         elif vGenero == 'Femenino':
@@ -85,9 +82,16 @@ def registrarPaciente():
         
         print("Los datos recogidos desde front, MODIFICADOS son: {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(vNombreCompleto, vFechaNacimiento, vEmail, vTelefono, vGenero, vOcupacion, vTipoSangre, vPeso, vAltura, vTipoIdentificacion, vNumeroIdentificacion, vDireccionPaciente, vPersonaContacto, vParentescoPaciente, vTelefonoFamiliar, vEnfermedadesCronicas, vAlergias, vAntecedentesFamiliares, vDatosMedicos))
 
-        #generar query
-        # vQuery = "INSERT INTO tb_persona (nombre_completo, email, ocupacion, tipo_de_sangre, id_genero) VALUES(%s,%s,%s,%s,%s,%s,%d)",()
+        #Objeto "cs" de tipo cursor, se va a declarar
+        cs = mysql.connection.cursor()
+        
+        #generar query para db_clinica_S181.tb_persona
         vQuery = "INSERT INTO {}.tb_persona (nombre_completo, email, ocupacion, tipo_de_sangre, id_genero) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',{})".format(esquema, vNombreCompleto, vEmail, vOcupacion, vTipoSangre, vGenero)
+        print("El query generado es: {}".format(vQuery))
+        cs.execute(vQuery)
+
+        #generar query para db_clinica_S181.tb_paciente
+        vQuery = "INSERT INTO {}.tb_paciente (nombre_completo, email, ocupacion, tipo_de_sangre, id_genero) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',{})".format(esquema, vNombreCompleto, vEmail, vOcupacion, vTipoSangre, vGenero)
         print("El query generado es: {}".format(vQuery))
         cs.execute(vQuery)
 
@@ -99,7 +103,7 @@ def registrarPaciente():
     session.pop('_flashes', None)
     flash('El registro fue existoso.')
     # cs.close()
-    #se ocupará para que una vez que guardemos nos regrese al formulario
+    #se ocupará para que una vez que guardemos nos regrese al formulario", registrarPaciente es el nombre del método
     return redirect(url_for('registrarPaciente'))
 
 @app.route("/mostrar-registros")
