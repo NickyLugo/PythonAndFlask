@@ -2,8 +2,8 @@
 <html lang="en" dir="ltr">
     <head>
         <meta charset="UTF-8">
-        <title> Responsive Registration Form | Doctor Administration</title>
-        <link rel="stylesheet" href="../css/style2.css">
+        <title>Actualizar médicos</title>
+        <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style2.css')}}">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 <body>
@@ -34,10 +34,6 @@
                     <span class="details">Contraseña</span>
                     <input type="text" placeholder="Ingrese una nueva contraseña" required>
                 </div>
-                <!--<div class="input-box">
-                    <span class="details">Confirmar contraseña</span>
-                    <input type="text" placeholder="Ingrese una nueva contraseña" required>
-                </div>-->
                 <div class="input-box">
                     <span class="details">Rol usuario</span>
                     <input type="text" placeholder="Admin / Doctor / Interno" required>
@@ -64,13 +60,12 @@
                 </div>
             </div>
             <div class="button">
-                <input type="submit" value="Consultar (con RFC)">
+                <input type="submit" value="Modificar (con RFC)">
             </div>
             <div class="button">
                 <input type="submit" formaction="menu-principal.html" value="Regresar" formnovalidate>
             </div>
         </form>
     </div>
-
 </body>
 </html>

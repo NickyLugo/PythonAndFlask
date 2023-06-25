@@ -27,18 +27,11 @@ mysql = MySQL(app)
 @app.route('/')
 def index():
     #return "Hola mundo Flask"
-    return render_template('index.html')
+    return render_template('menu-principal.html')
 
-'''
-@app.route('/otra')
-def index2():
-    #return "Hola mundo Flask"
-    return render_template('index.html')
-
-'''
 #Método de trabajo POST que trabaja por detrás de lo que ve el usuario
 #Recibe un envío de un formulario RUTA http:localhost:5000/ guardar tipo POST para insert
-@app.route('/guardar', methods=['POST'])
+@app.route('/registrar-paciente', methods=['POST'])
 def guardar():
     if request.method == 'POST':
 

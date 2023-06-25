@@ -6,8 +6,10 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CALENDAR</title>
-  <link rel="stylesheet" href="../css/style4.css">
-  <script src="../js/script4.js" defer></script>
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style4.css')}}">
+  <link rel="stylesheet" type="text/js" href="{{ url_for('static',filename='css/style4.css')}}">
+  <script src="{{url_for('static', filename='js/script4.js')}}"></script>
+
 </head>
 
 <body>
@@ -54,7 +56,7 @@
   <form action="#">
     <div class="button">
       <input type="submit" formaction="menu-principal.html" value="Regresar" formnovalidate>
-  </div>
+    </div>
   </form>
 </body>
 

@@ -5,31 +5,29 @@
     <!--<meta http-equiv="X-UA-Compatible" content="IE=edge">-->
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <title>Animated Login Form</title>
-    <link rel="stylesheet" href="../css/style1.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style8.css')}}">
 </head>
-
 <body>
     <div class = "box">
         <span class ="borderLine"></span>
         <form>
-            <h2>Inicio de sesión</h2>
-            <div class="inputBox">
+            <h2>Consultar expediente de pacientes</h2>
+            <!--<div class="inputBox">
                 <input type="text" required="required">
-                <!--Éste input indica que el campo Username llenarse-->
-                <span>RFC del médico</span>
+                <span>Username</span>
                 <i></i>
             </div>
             <div class="inputBox">
                 <input type="password" required="required">
-                <!--Éste input indica que la contraseña debe llenarse-->
-                <span>Contraseña</span>
+                <span>Password</span>
                 <i></i>
-            </div>
+            </div>-->
             <div class="links">
-                <a href="#">Olvidé contraseña</a>
-                <a href="#">Registro</a>
+                <a href="#">Actualizar</a>
+                <!--<a href="#">Sign up</a>-->
             </div>
-            <input type="submit" value="Iniciar">
+            <input type="submit" value="Por nombre de paciente">
+            <input type="submit" value="Por número de expediente">
         </form>
     </div>
 </body>

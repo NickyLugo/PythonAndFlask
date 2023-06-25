@@ -8,44 +8,56 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!----======== CSS ======== -->
-    <link rel="stylesheet" href="../css/style5.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style5.css')}}">
 
     <!----===== Iconscout CSS ===== -->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
-    <title>Registrar paciente</title>
+    <title>Consultar expediente</title>
 </head>
 
 <body>
     <div class="container">
         <header>Expediente del paciente</header>
         <form action="menu-principal.html">
+
+
+            <div class="details personal">
+                <span class="title">Ingresa el número de expediente</span>
+                <div class="input-field">
+                    <label>Número de expediente</label>
+                    <input type="text" placeholder="Número de expediente" required>
+                </div>
+            </div>
+            <div class="button">
+                <input type="submit" formaction="menu-principal.html" value="Consultar expediente">
+            </div>
             <div class="details personal">
                 <span class="title">Información personal</span>
                 <div class="fields">
 
                     <div class="input-field">
                         <label>Nombre completo</label>
-                        <input type="text" placeholder="Ingrese nombre del paciente" required>
+                        <input type="text" placeholder="Ingrese nombre del paciente" >
                     </div>
 
                     <div class="input-field">
                         <label>Fecha de nacimiento</label>
-                        <input type="date" placeholder="Ingrese fecha de nacimiento paciente" required>
+                        <input type="date" placeholder="Ingrese fecha de nacimiento paciente" >
                     </div>
 
                     <div class="input-field">
                         <label>Correo electrónico</label>
-                        <input type="email" placeholder="nombre@ejemplo.com" required>
+                        <input type="email" placeholder="nombre@ejemplo.com" >
                     </div>
 
                     <div class="input-field">
                         <label>Teléfono</label>
-                        <input type="number" placeholder="Número de teléfono del paciente" required>
+                        <input type="number" placeholder="Número de teléfono del paciente" >
                     </div>
 
                     <div class="input-field">
                         <label>Genero</label>
-                        <select required>
+                        <select >
                             <option disabled selected>Seleccione</option>
                             <option>Masculino</option>
                             <option>Femenino</option>
@@ -55,17 +67,17 @@
 
                     <div class="input-field">
                         <label>Ocupación</label>
-                        <input type="text" placeholder="Ingrese la ocupación del paciente" required>
+                        <input type="text" placeholder="Ingrese la ocupación del paciente" >
                     </div>
 
                     <div class="input-field">
                         <label>Tipo de sangre</label>
-                        <input type="text" placeholder="Tipo de sangre" required>
+                        <input type="text" placeholder="Tipo de sangre" >
                     </div>
 
                     <div class="input-field">
                         <label>Peso</label>
-                        <input type="text" placeholder="Peso del paciente" required>
+                        <input type="text" placeholder="Peso del paciente" >
                     </div>
 
                     <div class="input-field">
@@ -80,12 +92,12 @@
 
                     <div class="input-field">
                         <label>Tipo de identificación</label>
-                        <input type="text" placeholder="Enter ID type" required>
+                        <input type="text" placeholder="Enter ID type" >
                     </div>
 
                     <div class="input-field">
                         <label>Número de identificación</label>
-                        <input type="number" placeholder="Enter ID number" required>
+                        <input type="number" placeholder="Enter ID number" >
                     </div>
                 </div>
             </div>
@@ -97,12 +109,12 @@
                         <label>Dirección del paciente</label>
                         <input type="text"
                             placeholder="País, Estado, Municipio, Colonia, calle y número exterior, número interior"
-                            required>
+                            >
                     </div>
 
                     <div class="input-field">
                         <label>Persona de contacto</label>
-                        <input type="text" placeholder="Nombre de un familiar" required>
+                        <input type="text" placeholder="Nombre de un familiar" >
                     </div>
 
                     <div class="input-field">
@@ -112,7 +124,7 @@
 
                     <div class="input-field">
                         <label>Teléfono del familiar</label>
-                        <input type="text" placeholder="Teléfono del familiar" required>
+                        <input type="text" placeholder="Teléfono del familiar" >
                     </div>
 
                 </div>
@@ -123,17 +135,17 @@
 
                     <div class="input-field">
                         <label>Enfermedades crónicas</label>
-                        <input type="text" placeholder="Ingrese si cuenta con alguna" required>
+                        <input type="text" placeholder="Ingrese si cuenta con alguna" >
                     </div>
 
                     <div class="input-field">
                         <label>Alergias</label>
-                        <input type="text" placeholder="Ingrese si cuenta con alguna" required>
+                        <input type="text" placeholder="Ingrese si cuenta con alguna" >
                     </div>
 
                     <div class="input-field">
                         <label>Antecedentes familiares</label>
-                        <input type="text" placeholder="Ingrese si existe algun antecedente familiar" required>
+                        <input type="text" placeholder="Ingrese si existe algun antecedente familiar" >
                     </div>
                 </div>
 
@@ -142,16 +154,13 @@
 
                     <div class="input-field">
                         <label>Datos del Médico</label>
-                        <input type="text" placeholder="Nombre y cécula del Médico" required>
+                        <input type="text" placeholder="Nombre y cécula del Médico" >
                     </div>
 
                 </div>
 
                 <div class="button">
                     <input type="submit" formaction="menu-principal.html" value="Regresar" formnovalidate>
-                </div>
-                <div class="button">
-                    <input type="submit" formaction="menu-principal.html" value="Registrar paciente">
                 </div>
             </div>
         </form>
