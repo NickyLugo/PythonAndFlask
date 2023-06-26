@@ -82,17 +82,14 @@ def registrarPaciente():
         else: 
             vGenero = 3
             
-        def submit_date():
-            vFechaNacimiento = request.form['dateFechaNacimiento']
-            date_object = datetime.strptime(vFechaNacimiento, '%Y-%m-%d')
-            vFechaNacimiento = date_object.strftime('%Y-%m-%d')
+        vFechaNacimiento = request.form['dateFechaNacimiento']
+        date_object = datetime.strptime(vFechaNacimiento, '%Y-%m-%d')
+        vFechaNacimiento = date_object.strftime('%Y-%m-%d')
 
-    # Save the formatted_date to MySQL
-    # Example MySQL code:
-    # cursor.execute("INSERT INTO your_table (date_column) VALUES (%s)", (formatted_date,))
-    # connection.commit()
-
-            return "Date submitted: {}".format(vFechaNacimiento)  
+        # Save the formatted_date to MySQL
+        # Example MySQL code:
+        # cursor.execute("INSERT INTO your_table (date_column) VALUES (%s)", (formatted_date,))
+        # connection.commit()
 
         print("Los datos recogidos desde front, MODIFICADOS son: {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(vNombreCompleto, vFechaNacimiento, vEmail, vTelefono, vGenero, vOcupacion, vTipoSangre, vPeso, vAltura, vTipoIdentificacion, vNumeroIdentificacion, vDireccionPaciente, vPersonaContacto, vParentescoPaciente, vTelefonoFamiliar, vEnfermedadesCronicas, vAlergias, vAntecedentesFamiliares, vDatosMedicos))
 
@@ -104,15 +101,16 @@ def registrarPaciente():
         print("El query generado es: {}".format(vQuery))
         cs.execute(vQuery)
 
-
         #generar query para db_clinica_S181.tb_paciente
-        vQuery2 = "SELECT MAX(id_persona) FROM tb_persona" # Consulta SQL para obtener el máximo de la columna id_persona
-        cs.execute(vQuery2)
+        # Consulta SQL para obtener el máximo de la columna id_persona
+        vQuery = "SELECT MAX(id_persona) FROM {}.tb_persona".format(esquema)
+        cs.execute(vQuery)
 
-        id_persona = cs.fetchone()[0] # Obtiene el primer elemento de la tupla, que es el valor máximo de la columna id_persona
-        print(id_persona)
+        # Obtiene el primer elemento de la tupla, que es el valor máximo de la columna id_persona
+        idPersona = cs.fetchone()[0]
+        print(idPersona)
 
-        vQuery = "INSERT INTO {}.tb_paciente (fecha_nacimiento,enfermedades_cronicas,alergias,antecedentes_familiares,id_persona) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',{})".format(esquema, vFechaNacimiento, vEnfermedadesCronicas, vAlergias, vAntecedentesFamiliares,id_persona)
+        vQuery = "INSERT INTO {}.tb_paciente (fecha_nacimiento,enfermedades_cronicas,alergias,antecedentes_familiares,id_persona) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',{})".format(esquema, vFechaNacimiento, vEnfermedadesCronicas, vAlergias, vAntecedentesFamiliares,idPersona)
         print("El query generado es: {}".format(vQuery))
         cs.execute(vQuery)
         #Le decimos a mySQL que queremos hacer una confirmación del cambio
