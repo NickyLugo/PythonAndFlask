@@ -118,6 +118,7 @@ def registrarPaciente():
         print("El query generado es: {}".format(vQuery))
         cs.execute(vQuery)
         #Le decimos a mySQL que queremos hacer una confirmación del cambio
+        # al menos debe haber un commit
         mysql.connection.commit()
 
     #se ocupará para que se pueda mandar el mensaje que informa al usuario que quedó guardado.
