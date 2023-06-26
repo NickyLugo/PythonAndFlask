@@ -143,8 +143,7 @@ form .fields .input-field-dos {
     display: flex;
     width: 100%;
     flex-direction: column;
-    /*     background-color: red; */
-    flex-direction: column;
+/*     flex-direction: column; */
     margin: 4px 0;
 }
 

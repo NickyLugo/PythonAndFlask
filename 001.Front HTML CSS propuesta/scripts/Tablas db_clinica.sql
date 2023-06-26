@@ -55,9 +55,7 @@ CREATE TABLE `tb_medico` (
   `password` varchar(200) NOT NULL,
   `posicion` varchar(100) NOT NULL,
   `id_rol` INT NOT NULL,
-  `id_persona` INT NOT NULL,
   FOREIGN KEY (`id_rol`) REFERENCES `tb_cat_rol` (`id_rol`),
-  FOREIGN KEY (`id_persona`) REFERENCES `tb_persona` (`id_persona`),
   PRIMARY KEY (id_medico)
 );
 

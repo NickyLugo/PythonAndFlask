@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Alta persona</title>
+  <link rel="stylesheet" href="../static/css/styles-alta-persona.css">
+</head>
+<body>
+    <header>
+      <img src="../static/img/imLogoUnes2.jpg" alt="Logo" class="logo">
+      <h1>¿Y tú te UNES?</h1>
+    </header>
+  <form>
+      <!-- <h3>Registro aquí:</h3> -->
+
+      <div class="input-box">
+        <label for="txtNombrePersona">Nombre(s):</label>
+        <input type="text" id="nombre" name="txtNombrePersona" required><br>
+      </div>
+
+      <div class="input-box">
+        <label for="txtApellidoPaterno">Apellido Paterno:</label>
+        <input type="text" id="ape_paterno" name='txtApellidoPaterno' required><br>
+      </div>
+
+      <div class="input-box">
+        <label for="txtApellidoMaterno">Apellido Materno:</label>
+        <input type="text" id="ape_materno" name="txtApellidoMaterno" required><br>
+      </div>
+
+      <div class="input-box">
+        <label for="dateFechaNacimiento">Fecha de Nacimiento:</label>
+        <input type="date" id="fecha_nacimiento" name="dateFechaNacimiento" required><br>
+      </div>
+
+      <div class="input-box">
+        <label for="txtCarrera">Carrera:</label>
+        <input type="text" id="carrera" name="txtCarrera" required><br>
+      </div>
+
+      <div class="input-box">
+        <label for="txtEmail">Email:</label>
+        <input type="email" id="email" name="txtEmail" required pattern="[a-z0-9._%+-]+@upq\.edu\.mx$" placeholder="example@upq.edu.mx"><br>
+      </div>
+
+      <div class="input-box">
+        <label for="numberTelefono">Teléfono:</label>
+        <input type="tel" id="telefono" name="numberTelefono" required><br>
+      </div>
+
+      <div class="button">
+        <input type="submit" value="Registro nuevo">
+      </div>
+
+      <div class="button">
+        <input type="submit" value="Log-in usuario">
+      </div>
+
+  </form>
+</body>
+</html>

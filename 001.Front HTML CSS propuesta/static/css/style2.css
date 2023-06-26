@@ -128,15 +128,11 @@ form input[type="radio"] {
 }
 
 form .button {
-    display: flex;
+    display:flex;
     flex-wrap: wrap;
     padding-bottom: 6px;
     justify-content: center;
     margin: 5px;
-    /* border-radius: 5px; */
-    /*     border: 1px solid #ccc; */
-    /*     height: 45px;
-    margin: 45px 0; */
 }
 
 form .button input {

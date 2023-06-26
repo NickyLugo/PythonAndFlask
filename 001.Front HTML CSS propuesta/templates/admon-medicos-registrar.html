@@ -10,6 +10,18 @@
 
 <body>
     <div class="container">
+        <br>
+                <!-- Código de Jinja, desde una lista mensajes -->
+        {% with mensajes = get_flashed_messages() %}
+        <!-- Boolean, solo queremos saber si hay mensajes -->
+            {% if mensajes %}
+                {%for msj in mensajes%}
+                <!-- ECO, muy similar a como se usa blade -->
+                    <center><h2 style="color: red;">{{msj}}</h2></center>
+                {%endfor%}
+            {% endif %}
+        {% endwith %}
+        <br>
         <div class="title">Administración de médicos</div>
         <form action="#">
             <div class="user-details">
@@ -18,23 +30,23 @@
                     <!--<span class="details">
                         <a href="#">Nombre completo</a>
                     </span>-->
-                    <input type="text" placeholder="Apellido paterno, materno, nombre" required>
+                    <input type="text" name="txtNombreCompleto" placeholder="Apellido paterno, materno, nombre" required>
                 </div>
                 <div class="input-box">
                     <span class="details">RFC</span>
-                    <input type="text" placeholder="Ingrese RFC Doctor" required>
+                    <input type="text" name="txtRFC" placeholder="Ingrese RFC Doctor" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Cedula</span>
-                    <input type="text" placeholder="Ingrese cédula o Registro" required>
+                    <input type="text" name="txtCedula" placeholder="Ingrese cédula o Registro" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Correo electronico</span>
-                    <input type="email" placeholder="doctor@ejemplo.com" required>
+                    <input type="email" name="txtEmail" placeholder="doctor@ejemplo.com" required>
                 </div>
                 <div class="input-box">
                     <span class="details">Contraseña</span>
-                    <input type="password" placeholder="Ingrese una nueva contraseña" required>
+                    <input type="password" name="txtPassword" placeholder="Ingrese una nueva contraseña" required>
                 </div>
                 <!--<div class="input-box">
                     <span class="details">Confirmar contraseña</span>
@@ -42,31 +54,31 @@
                 </div>-->
                 <div class="input-box">
                     <span class="details">Rol usuario</span>
-                    <input type="text" placeholder="Admin / Doctor / Interno" required>
+                    <input type="text" name="txtRol" placeholder="Administrador / Usuario" required>
                 </div>
             </div>
-            <div class="gender-details">
+            <!-- <div class="hidden">
                 <input type="radio" name="gender" id="dot-1">
                 <input type="radio" name="gender" id="dot-2">
                 <input type="radio" name="gender" id="dot-3">
-                <span class="gender-title">Genero</span>
-                <div class="category">
+                    <span class="gender-title">Genero</span>
+                <div class="hidden">
                     <label for="dot-1">
                         <span class="dot one"></span>
-                        <span class="gender">Masculino</span>
+                             <span class="gender">Masculino</span>
                     </label>
                     <label for="dot-2">
                         <span class="dot two"></span>
-                        <span class="gender">Femenino</span>
+                             <span class="gender">Femenino</span>
                     </label>
                     <label for="dot-3">
                         <span class="dot three"></span>
-                        <span class="gender">Prefiero no decir</span>
+                             <span class="gender">Otro</span>
                     </label>
                 </div>
-            </div>
+            </div> -->
             <div class="button">
-                <input type="submit" value="Registrar">
+                <input type="submit" formaction="/admon-medicos-registrar" value="Registrar">
             </div>
             <div class="button">
                 <input type="submit" formaction="/menu-principal" value="Regresar" formnovalidate>

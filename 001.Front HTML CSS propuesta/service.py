@@ -129,6 +129,52 @@ def registrarPaciente():
     #se ocupará para que una vez que guardemos nos regrese al formulario", registrarPaciente es el nombre del método
     return redirect(url_for('registrarPaciente'))
 
+##Empieza registro medicos
+@app.route('/admon-medicos-registrar', methods=['POST'])
+def registrarMedico():
+    if request.method == 'POST':
+
+        #Pasamos a variables el contenido de los input, les ponemos una "v" de variable
+        vNombreCompleto = request.form['txtNombreCompleto']
+        vRFC = request.form['txtRFC']
+        vCedula = request.form['txtCedula']
+        vEmail = request.form['txtEmail']
+        vPassword = request.form['txtPassword']
+        vRol = request.form['txtRol']
+      
+        print("Los datos recogidos desde front son : {}, {}, {}, {}, {}, {}".format(vNombreCompleto, vRFC, vCedula, vEmail, vPassword, vRol))
+        
+        
+        if vRol in ['Administrador','Adminis','Admin','Administrator', 'Admon', 'administrador',' adminis', 'administrador','admin', 'administrator', 'ADMINISTRADOR', 'ADMON', 'ADMINIS', 'ADMIN','ADMINISTRATOR']:
+            vRol = 1
+        else: 
+            vRol = 2
+
+            
+        print("Los datos recogidos desde front, MODIFICADOS son: {}, {}, {}, {}, {}, {}".format(vNombreCompleto, vRFC, vCedula, vEmail, vPassword, vRol))
+
+        #Objeto "cs" de tipo cursor, se va a declarar
+        cs = mysql.connection.cursor()
+
+        #generar query para db_clinica_S181.tb_persona
+        vQuery = "INSERT INTO {}.tb_medicos (Nombre_medico, RFC, cedula_profesional, email, password, id_rol) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'{}\')".format(esquema, vNombreCompleto, vRFC, vCedula, vEmail, vPassword, vRol)
+        print("El query generado es: {}".format(vQuery))
+        cs.execute(vQuery)
+
+        
+        mysql.connection.commit()
+
+    #se ocupará para que se pueda mandar el mensaje que informa al usuario que quedó guardado.
+    #se utiliza session.pop('_flashes', None) para borrar los mensajes enviados previamente con flash, esto dado que se guardan en la session
+    session.pop('_flashes', None)
+    flash('El registro fue existoso.')
+    # cs.close()
+    #se ocupará para que una vez que guardemos nos regrese al formulario", registrarPaciente es el nombre del método
+    return redirect(url_for('registrarMedico'))
+
+
+##Termina registro medicos
+
 @app.route("/mostrar-registros")
 def mostrar():
     cs = mysql.connection.cursor() 
@@ -151,5 +197,5 @@ def eliminar():
 
 #Ejecución del servidor en el puerto 5000 
 if __name__ =='__main__':
-    app.run(port=5000)
-    #app.run(port=5000, debug = True)
+    #app.run(port=5000)
+    app.run(port=5000, debug = True)
