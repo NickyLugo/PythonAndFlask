@@ -105,7 +105,6 @@ def registrarPaciente():
         cs.execute(vQuery)
 
         #generar query para db_clinica_S181.tb_paciente
-        
         vQuery2 = "SELECT MAX(id_persona) FROM tb_persona" # Consulta SQL para obtener el máximo de la columna id_persona
         cs.execute(vQuery2)
 
