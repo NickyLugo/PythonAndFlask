@@ -86,7 +86,6 @@ def registrarPaciente():
         else: 
             vGenero = 3
             
-        vFechaNacimiento = request.form['dateFechaNacimiento']
         date_object = datetime.strptime(vFechaNacimiento, '%Y-%m-%d')
         vFechaNacimiento = date_object.strftime('%Y-%m-%d')
 
