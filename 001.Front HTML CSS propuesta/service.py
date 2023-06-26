@@ -90,11 +90,6 @@ def registrarPaciente():
         date_object = datetime.strptime(vFechaNacimiento, '%Y-%m-%d')
         vFechaNacimiento = date_object.strftime('%Y-%m-%d')
 
-        # Save the formatted_date to MySQL
-        # Example MySQL code:
-        # cursor.execute("INSERT INTO your_table (date_column) VALUES (%s)", (formatted_date,))
-        # connection.commit()
-
         print("Los datos recogidos desde front, MODIFICADOS son: {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(vNombreCompleto, vFechaNacimiento, vEmail, vTelefono, vGenero, vOcupacion, vTipoSangre, vPeso, vAltura, vTipoIdentificacion, vNumeroIdentificacion, vDireccionPaciente, vPersonaContacto, vParentescoPaciente, vTelefonoFamiliar, vEnfermedadesCronicas, vAlergias, vAntecedentesFamiliares, vDatosMedicos))
 
         #Objeto "cs" de tipo cursor, se va a declarar
