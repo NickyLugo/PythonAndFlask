@@ -125,8 +125,8 @@ def registrarPaciente():
     #se utiliza session.pop('_flashes', None) para borrar los mensajes enviados previamente con flash, esto dado que se guardan en la session
     session.pop('_flashes', None)
     flash('El registro fue existoso.')
-    # cs.close()
-    #se ocupará para que una vez que guardemos nos regrese al formulario", registrarPaciente es el nombre del método
+    cs.close()
+    #se ocupará para que, una vez que guardemos, nos regrese al formulario... "registrarPaciente" es el nombre del método
     return redirect(url_for('registrarPaciente'))
 
 @app.route("/mostrar-registros")
