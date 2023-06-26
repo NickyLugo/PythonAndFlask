@@ -102,6 +102,7 @@ def registrarPaciente():
         #generar query para db_clinica_S181.tb_paciente
         # Consulta SQL para obtener el máximo de la columna id_persona
         vQuery = "SELECT MAX(id_persona) FROM {}.tb_persona".format(esquema)
+        print("El query generado es: {}".format(vQuery))
         cs.execute(vQuery)
 
         # Obtiene el primer elemento de la tupla, que es el valor máximo de la columna id_persona
