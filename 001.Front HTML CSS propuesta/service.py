@@ -86,14 +86,8 @@ def registrarPaciente():
         else: 
             vGenero = 3
             
-        vFechaNacimiento = request.form['dateFechaNacimiento']
         date_object = datetime.strptime(vFechaNacimiento, '%Y-%m-%d')
         vFechaNacimiento = date_object.strftime('%Y-%m-%d')
-
-        # Save the formatted_date to MySQL
-        # Example MySQL code:
-        # cursor.execute("INSERT INTO your_table (date_column) VALUES (%s)", (formatted_date,))
-        # connection.commit()
 
         print("Los datos recogidos desde front, MODIFICADOS son: {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(vNombreCompleto, vFechaNacimiento, vEmail, vTelefono, vGenero, vOcupacion, vTipoSangre, vPeso, vAltura, vTipoIdentificacion, vNumeroIdentificacion, vDireccionPaciente, vPersonaContacto, vParentescoPaciente, vTelefonoFamiliar, vEnfermedadesCronicas, vAlergias, vAntecedentesFamiliares, vDatosMedicos))
 
@@ -108,6 +102,7 @@ def registrarPaciente():
         #generar query para db_clinica_S181.tb_paciente
         # Consulta SQL para obtener el máximo de la columna id_persona
         vQuery = "SELECT MAX(id_persona) FROM {}.tb_persona".format(esquema)
+        print("El query generado es: {}".format(vQuery))
         cs.execute(vQuery)
 
         # Obtiene el primer elemento de la tupla, que es el valor máximo de la columna id_persona
@@ -125,8 +120,8 @@ def registrarPaciente():
     #se utiliza session.pop('_flashes', None) para borrar los mensajes enviados previamente con flash, esto dado que se guardan en la session
     session.pop('_flashes', None)
     flash('El registro fue existoso.')
-    # cs.close()
-    #se ocupará para que una vez que guardemos nos regrese al formulario", registrarPaciente es el nombre del método
+    cs.close()
+    #se ocupará para que, una vez que guardemos, nos regrese al formulario... "registrarPaciente" es el nombre del método
     return redirect(url_for('registrarPaciente'))
 
 ##Empieza registro medicos
