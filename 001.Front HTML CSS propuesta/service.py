@@ -36,6 +36,10 @@ def iniciarLogin():
 def iniciarMenuPrincipal():
     return render_template('menu-principal.html')
 
+@app.route('/admon-medicos-registrar')
+def iniciarRegistrarMedico():
+    return render_template('admon-medicos-registrar.html')
+
 @app.route('/registrar-perfil-paciente')
 def iniciarRegistrarPaciente():
     return render_template('perfil-paciente-registrar.html')
