@@ -4,6 +4,8 @@
 from flask import Flask, render_template, request, redirect, url_for, flash, session
 #flash se ocupa para poder ...
 from flask_mysqldb import MySQL
+#Se importa para desmenuzar la fecha 
+from datetime import datetime 
 # from .globals import session
 
 #inicialización del APP (servidor)
@@ -13,11 +15,11 @@ app=Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root' 
 #Laptop
-#app.config['MYSQL_PASSWORD']=''
+app.config['MYSQL_PASSWORD']=''
 #Desktop
-app.config['MYSQL_PASSWORD']='root'
-app.config['MYSQL_DB']='db_clinica_S181'
-esquema = 'db_clinica_S181'
+#app.config['MYSQL_PASSWORD']='root'
+app.config['MYSQL_DB']='db_clinica_s181'
+esquema = 'db_clinica_s181'
 #Se agrega para evitar RuntimeError: The session is unavailable because no secret key was set.
 app.secret_key='mysecretkey'
 mysql = MySQL(app)
@@ -79,7 +81,19 @@ def registrarPaciente():
             vGenero = 2
         else: 
             vGenero = 3
-        
+            
+        def submit_date():
+            vFechaNacimiento = request.form['dateFechaNacimiento']
+            date_object = datetime.strptime(vFechaNacimiento, '%Y-%m-%d')
+            vFechaNacimiento = date_object.strftime('%Y-%m-%d')
+
+    # Save the formatted_date to MySQL
+    # Example MySQL code:
+    # cursor.execute("INSERT INTO your_table (date_column) VALUES (%s)", (formatted_date,))
+    # connection.commit()
+
+            return "Date submitted: {}".format(vFechaNacimiento)  
+
         print("Los datos recogidos desde front, MODIFICADOS son: {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}, {}".format(vNombreCompleto, vFechaNacimiento, vEmail, vTelefono, vGenero, vOcupacion, vTipoSangre, vPeso, vAltura, vTipoIdentificacion, vNumeroIdentificacion, vDireccionPaciente, vPersonaContacto, vParentescoPaciente, vTelefonoFamiliar, vEnfermedadesCronicas, vAlergias, vAntecedentesFamiliares, vDatosMedicos))
 
         #Objeto "cs" de tipo cursor, se va a declarar
@@ -91,10 +105,16 @@ def registrarPaciente():
         cs.execute(vQuery)
 
         #generar query para db_clinica_S181.tb_paciente
-        vQuery = "INSERT INTO {}.tb_paciente (nombre_completo, email, ocupacion, tipo_de_sangre, id_genero) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',{})".format(esquema, vNombreCompleto, vEmail, vOcupacion, vTipoSangre, vGenero)
+        
+        vQuery2 = "SELECT MAX(id_persona) FROM tb_persona" # Consulta SQL para obtener el máximo de la columna id_persona
+        cs.execute(vQuery2)
+
+        id_persona = cs.fetchone()[0] # Obtiene el primer elemento de la tupla, que es el valor máximo de la columna id_persona
+        print(id_persona)
+
+        vQuery = "INSERT INTO {}.tb_paciente (fecha_nacimiento,enfermedades_cronicas,alergias,antecedentes_familiares,id_persona) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',{})".format(esquema, vFechaNacimiento, vEnfermedadesCronicas, vAlergias, vAntecedentesFamiliares,id_persona)
         print("El query generado es: {}".format(vQuery))
         cs.execute(vQuery)
-
         #Le decimos a mySQL que queremos hacer una confirmación del cambio
         mysql.connection.commit()
 
