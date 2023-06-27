@@ -18,6 +18,7 @@ app.config['MYSQL_USER']='root'
 app.config['MYSQL_PASSWORD']=''
 #Desktop
 #app.config['MYSQL_PASSWORD']='root'
+
 app.config['MYSQL_DB']='db_unes_s181'
 esquema = 'db_unes_s181'
 
@@ -57,18 +58,9 @@ def registrarPersona():
         vFechaNacimiento = request.form['dateFechaNacimiento']
         vCarrera = request.form['txtCarrera']
         vEmail = request.form['txtEmail']
-        vTelefono = request.form['numberTelefono']
-        
-        """ vTelefono = request.form['txtTelefono']
-        vGenero = request.form['txtGenero']
-        vOcupacion = request.form['txtOcupacion']
-        vTipoIdentificacion = request.form['txtTipoIdentificacion']
-        vNumeroIdentificacion = request.form['numberNumeroIdentificacion']
-        vDireccionUsuario = request.form['txtDireccionUsuario']
-        vPersonaContacto = request.form['txtPersonaContacto']
-        vParentiescoPasajero = request.form['txtParientescoPasajero']
-        vTelefonoFamiliar = request.form['txtTelefonoFamiliar']
-        vDatosChofer = request.form['txtDatosChofer']"""        
+        vTelefono = request.form['numberTelefono']   
+
+
         
         print("Los datos recogidos desde front son : {}, {}, {}, {}, {}, {}".format(vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vTelefono))
         
@@ -81,13 +73,15 @@ def registrarPersona():
         # cursor.execute("INSERT INTO your_table (date_column) VALUES (%s)", (formatted_date,))
         # connection.commit()
 
-        print("Los datos recogidos desde front, MODIFICADOS son: {}, {}, {}, {}, {}, {}".format(vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail))
+        print("Los datos recogidos MODIFICADOS son: {}, {}, {}, {}, {}, {}, {}".format(vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vTelefono))
 
         #Objeto "cs" de tipo cursor, se va a declarar
         cs = mysql.connection.cursor()
         
-        #generar query para db_clinica_S181.tb_persona
-        vQuery = "INSERT INTO {}.tb_persona (nombre, apellido_paterno, apellido_materno, fecha_nacimiento, carrera, email, telefono) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',{})".format(esquema, vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vTelefono)
+        #cs.execute('INSERT INTO tb_persona(nombre, apellido_paterno, apellido_materno, fecha_nacimiento, carrera, email, telefono) values(%s, %s, %s, %s, %s, %s, %s)',(vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vTelefono))
+
+            #generar query para db_clinica_S181.tb_persona
+        vQuery = "INSERT INTO {}.tb_persona (nombre, apellido_paterno, apellido_materno, fecha_nacimiento, carrera, email, telefono) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'{}\')".format(esquema, vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vTelefono)
         print("El query generado es: {}".format(vQuery))
         cs.execute(vQuery)
 
@@ -99,7 +93,7 @@ def registrarPersona():
     #se utiliza session.pop('_flashes', None) para borrar los mensajes enviados previamente con flash, esto dado que se guardan en la session
     session.pop('_flashes', None)
     flash('El registro fue existoso.')
-    # cs.close()
+    cs.close()
     #se ocupará para que una vez que guardemos nos regrese al formulario", registrarPaciente es el nombre del método
     return redirect(url_for('registrarPersona'))
 

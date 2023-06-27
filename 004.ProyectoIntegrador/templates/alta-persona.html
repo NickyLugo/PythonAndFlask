@@ -7,6 +7,18 @@
 </head>
 <body>
     <header>
+      <br>
+        <!-- Código de Jinja, desde una lista mensajes -->
+        {% with mensajes = get_flashed_messages() %}
+        <!-- Boolean, solo queremos saber si hay mensajes -->
+            {% if mensajes %}
+                {%for msj in mensajes%}
+                <!-- ECO, muy similar a como se usa blade -->
+                    <center><h2 style="color: red;">{{msj}}</h2></center>
+                {%endfor%}
+            {% endif %}
+        {% endwith %}
+        <br>
       <img src="../static/img/imLogoUnes2.jpg" alt="Logo" class="logo">
       <h1>¿Y tú te UNES?</h1>
     </header>
@@ -49,12 +61,13 @@
       </div>
 
       <div class="button">
-        <input type="submit" value="Registro nuevo">
+        <input type="submit" formaction="/" value="Log-in usuario">
       </div>
 
       <div class="button">
-        <input type="submit" value="Log-in usuario">
+        <input type="submit" formaction="/registro-personas-unes" formmethod="POST"  value="Registro nuevo">
       </div>
+
 
   </form>
 </body>

@@ -139,12 +139,10 @@ def registrarMedico():
       
         print("Los datos recogidos desde front son : {}, {}, {}, {}, {}, {}".format(vNombreCompleto, vRFC, vCedula, vEmail, vPassword, vRol))
         
-        
         if vRol in ['Administrador','Adminis','Admin','Administrator', 'Admon', 'administrador',' adminis', 'administrador','admin', 'administrator', 'ADMINISTRADOR', 'ADMON', 'ADMINIS', 'ADMIN','ADMINISTRATOR']:
             vRol = 1
         else: 
             vRol = 2
-
             
         print("Los datos recogidos desde front, MODIFICADOS son: {}, {}, {}, {}, {}, {}".format(vNombreCompleto, vRFC, vCedula, vEmail, vPassword, vRol))
 
@@ -152,7 +150,7 @@ def registrarMedico():
         cs = mysql.connection.cursor()
 
         #generar query para db_clinica_S181.tb_persona
-        vQuery = "INSERT INTO {}.tb_medicos (Nombre_medico, RFC, cedula_profesional, email, password, id_rol) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'{}\')".format(esquema, vNombreCompleto, vRFC, vCedula, vEmail, vPassword, vRol)
+        vQuery = "INSERT INTO {}.tb_medico (Nombre_medico, RFC, cedula_profesional, email, password, id_rol) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'{}\')".format(esquema, vNombreCompleto, vRFC, vCedula, vEmail, vPassword, vRol)
         print("El query generado es: {}".format(vQuery))
         cs.execute(vQuery)
 
@@ -166,7 +164,6 @@ def registrarMedico():
     # cs.close()
     #se ocupará para que una vez que guardemos nos regrese al formulario", registrarPaciente es el nombre del método
     return redirect(url_for('registrarMedico'))
-
 
 ##Termina registro medicos
 
@@ -192,5 +189,5 @@ def eliminar():
 
 #Ejecución del servidor en el puerto 5000 
 if __name__ =='__main__':
-    #app.run(port=5000)
-    app.run(port=5000, debug = True)
+    app.run(port=5000)
+    #app.run(port=5000, debug = True)

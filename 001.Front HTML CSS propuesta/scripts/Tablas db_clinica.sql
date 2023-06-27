@@ -1,4 +1,4 @@
-USE db_clinica_S181;
+USE db_clinica_s181;
 
 CREATE TABLE `tb_cat_rol` (
   `id_rol` INT NOT NULL AUTO_INCREMENT,
@@ -54,8 +54,7 @@ CREATE TABLE `tb_medico` (
   `cedula_profesional` varchar(100) NOT NULL,
   `password` varchar(200) NOT NULL,
   `posicion` varchar(100) NOT NULL,
-  `id_rol` INT NOT NULL,
-  FOREIGN KEY (`id_rol`) REFERENCES `tb_cat_rol` (`id_rol`),
+  `id_rol` varchar(100) NOT NULL,
   PRIMARY KEY (id_medico)
 );
 
