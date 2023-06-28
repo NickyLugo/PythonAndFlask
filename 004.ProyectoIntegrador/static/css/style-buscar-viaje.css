@@ -1,3 +1,28 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body
+{
+    display: flex;
+    padding-top: 350px;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background: url("../img/imAuto11.jpg") no-repeat, center top;
+    background-size: cover;
+    height: 100vh;
+}
+.background-image
+{
+    height: 150px;    
+    width: 200px;
+    justify-content: right;
+}
 .container {
     max-width: 600px;
     margin: 0 auto;
@@ -52,3 +77,4 @@
   .buttons button[type="submit"] {
     background-color: #0F9D58;
   }
+  
