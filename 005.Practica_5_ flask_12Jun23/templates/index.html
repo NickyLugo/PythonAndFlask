@@ -33,5 +33,32 @@
         <!-- Para evitar que no tenga funcionalidad, agregamos el tipo de botón = submit -->
         <button type="submit">Guardar</button>
     </form>
+<br>
+<br>
+    <h1>Albums guardados</h1>
+    <table>
+        <thead>
+            <tr> <!-- para filas -->
+                <td> Id: </td> <!-- para columnas -->
+                <td> Album: </td>
+                <td> Artista: </td>
+                <td> Año publicación: </td>
+            </tr>
+        </thead>
+        <tbody>
+            {%for album in albumesRecords%}
+                <tr>
+                    <td>{{album.0}}</td>
+                    <td>{{album.1}}</td>
+                    <td>{{album.2}}</td>
+                    <td>{{album.3}}</td>
+                    <td>
+                        <a href=#> Editar </a>
+                        <a href=#> Borrar </a>
+                    </td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
 </body>
 </html>

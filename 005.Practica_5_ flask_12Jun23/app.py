@@ -12,9 +12,9 @@ app=Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root' 
 #Laptop
-#app.config['MYSQL_PASSWORD']=''
+app.config['MYSQL_PASSWORD']=''
 #Desktop
-app.config['MYSQL_PASSWORD']='root'
+#app.config['MYSQL_PASSWORD']='root'
 app.config['MYSQL_DB']='dbflask'
 #Se agrega para evitar RuntimeError: The session is unavailable because no secret key was set.
 app.secret_key='mysecretkey'
@@ -27,7 +27,13 @@ mysql = MySQL(app)
 @app.route('/')
 def index():
     #return "Hola mundo Flask"
-    return render_template('index.html')
+    #Cursor de la consulta cc
+    cc = mysql.connection.cursor()
+    cc.execute('select * from tbalbums')
+    #El resultado de la consulta lo guardamos en una variable que se llame conAlbums
+    conAlbums = cc.fetchall()
+    #print(conAlbums)
+    return render_template('index.html', albumesRecords = conAlbums)
 
 '''
 @app.route('/otra')
