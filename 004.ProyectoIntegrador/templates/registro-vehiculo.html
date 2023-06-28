@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registro de Vehículo</title>
+  <form action="/registro-vehiculo-unes" method="GET"></form>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Registro de Vehículo</h2>
+    <form>
+      <div class="input-box">
+        <label for="marca">Marca:</label>
+        <input type="text" id="marca" name="marca">
+      </div>
+      <div class="input-box">
+        <label for="modelo">Modelo (submarca):</label>
+        <input type="text" id="modelo" name="modelo">
+      </div>
+      <div class="input-box">
+        <label for="anio">Año:</label>
+        <input type="text" id="anio" name="anio">
+      </div>
+      <div class="input-box">
+        <label for="poliza">Póliza de Seguro:</label>
+        <input type="text" id="poliza" name="poliza">
+      </div>
+      <div class="input-box">
+        <label for="color">Color:</label>
+        <input type="text" id="color" name="color">
+      </div>
+      <div class="input-box">
+        <label for="placas">Número de Placas:</label>
+        <input type="text" id="placas" name="placas">
+      </div>
+      
+      <div class="buttons">
+        <button type="button">Regresar</button>
+        <button type="button">Modificar registro</button>
+        <button input type="submit" formaction="/registro-vehiculo-unes" formmethod="POST" >Guardar</button>
+        
+      </div>
+    </form>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>

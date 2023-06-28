@@ -1,0 +1,29 @@
+body
+{
+    background: url("../img/imAuto3.jpg") no-repeat, center top;
+    background-size: cover;
+    font-size: 35px;
+    color: white;
+}
+
+button {
+    display: block;
+    margin: 0 auto;
+    width: 400px;
+    height: 200px;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    line-height: 200px;
+    border-radius: 10px;
+  }
+  
+  .red-button {
+    background-color: red;
+    color: white;
+  }
+  
+  .blue-button {
+    background-color: blue;
+    color: white;
+  }

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>UNES auto compartido</title>
+  <form action="/publicar-viaje" method="GET"></form>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <h1>Car Sharing</h1>
+  
+  <div class="input-boxes">
+    <input type="text" placeholder="¿Desde donde sales?">
+    <input type="text" placeholder="¿A donde viajas?">
+    <input type="text" placeholder="¿Qué ruta tomarás?">
+    <input type="text" placeholder="¿Cuando sales?">
+    <input type="text" placeholder="¿Cuántos pasajeros de UNES podrías llevar contigo?">
+    <input type="text" placeholder="Establece un precio por asiento">
+  </div>
+  
+  <div class="buttons">
+    <button class="regresar-button">Regresar a principal</button>
+  </div>
+  <div class="buttons">
+    <input type="submit" formaction="publicar-viaje" formmethod="POST" value="Iniciar">
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
