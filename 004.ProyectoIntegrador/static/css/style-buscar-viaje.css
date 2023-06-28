@@ -17,6 +17,24 @@ body
     background-size: cover;
     height: 100vh;
 }
+
+.h1
+{
+  display:flex;
+  position: top;
+  color: red;
+}
+
+.title
+{
+  position: top;
+  display:flex;
+  position: top;
+  color:blue;
+  font-size: 46px;
+  padding-bottom: 600px;
+}
+
 .background-image
 {
     height: 150px;    
@@ -39,6 +57,7 @@ body
   
   .input-box {
     margin-bottom: 20px;
+    padding-bottom: 500px;
   }
   
   .input-box label {
