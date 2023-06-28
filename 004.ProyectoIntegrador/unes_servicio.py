@@ -32,18 +32,39 @@ mysql = MySQL(app)
 
 #Declaración de la inicialización de las rutas. Ésta le pertenece a http://localhost:5000
 #Ruta '/' es la ruta principal
+
 #El archivo principal de las interfaces debe tener el 'index'
 @app.route('/')
 def iniciarLoginUnes():
     return render_template('login-unes.html')
 
-@app.route('/menu-principal-unes')
-def iniciarMenuPrincipalUnes():
-    return render_template('menu-principal-unes.html')
-
 @app.route('/registro-personas-unes')
 def iniciarRegistroPersonaUnes():
     return render_template('alta-persona.html')
+
+@app.route('/botones-chofer-o-pasajero')
+def iniciarChoferOPasajeroUnes():
+    return render_template('botones-chofer-o-pasajero.html')
+
+@app.route('/pantalla-principal')
+def iniciarPantallaPrincipalUnes():
+    return render_template('pantalla-principal.html')
+
+@app.route('/buscar-viaje')
+def iniciarBuscarViajeUnes():
+    return render_template('buscar-viaje.html')
+
+@app.route('/registro-vehiculo-unes')
+def iniciarRegistroVehiculoUnes():
+    return render_template('registro-vehiculo.html')
+
+@app.route('/publicar-viaje')
+def iniciarPublicarViajeUnes():
+    return render_template('publicar-viaje.html')
+
+@app.route('/mi-perfil')
+def iniciarMiPerfil():
+    return render_template('perfil-usuario.html')
 
 
 #Método de trabajo POST que trabaja por detrás de lo que ve el usuario

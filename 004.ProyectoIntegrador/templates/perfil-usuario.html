@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perfil de Usuario</title>
+  <form action="/mi-perfil" method="GET"></form>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <div class="profile">
+      <div class="profile-photo">
+        <img src="ruta_de_la_foto.jpg" alt="Foto de perfil">
+      </div>
+      <div class="profile-details">
+        <h2>Nombre de Usuario</h2>
+        <p>Dirección: <span contenteditable="true">Dirección del usuario</span></p>
+        <p>Teléfono: <span contenteditable="true">Teléfono del usuario</span></p>
+        <p>Score: <span class="score" readonly>Score del usuario</span></p>
+      </div>
+    </div>
+    <div class="document-upload">
+      <h3>Cargar documentos</h3>
+      <input type="file" accept="image/jpeg" multiple>
+      <input type="file" accept="application/pdf">
+    </div>
+    <div class="submit">
+        <button>Actualizar</button  formaction="mi-perfil" formmethod="POST">
+    </div>
+  </div>
+  
+  <script src="script.js"></script>
+</body>
+</html>
