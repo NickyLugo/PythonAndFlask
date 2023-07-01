@@ -9,13 +9,32 @@
 body
 {
     display: flex;
-    padding-top: 350px;
+    padding-top: 300px;
     justify-content: center;
     align-items: center;
     min-height: 90vh;
     background: url("../img/imAuto11.jpg") no-repeat, center top;
     background-size: cover;
     height: 100vh;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+.title
+{
+  padding-bottom: 150px;
+}
+
+.buscar-button
+{
+  font-size: 30px;
+  border-radius: 10px;
+  position: relative;
+  margin: 10px 10px;
+  background-color:darkorange;
+  color:indigo;
+  width: 200px;
+  height: 103px;
 }
 
 .h1
