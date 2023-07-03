@@ -88,8 +88,24 @@ def mostrar():
     cs.close()
     return render_template("mostrar-registros.html", albumesRecords = rows)
 
+""" si no viene el parametro, no va a encontrar la ruta """
+@app.route('/editar/<id>')
+def editar(id):
+        cursoID = mysql.connection.cursor()
+        """ cursoID.execute('SELECT * FROM tbalbums WHERE id= %s', (id,)) """
+        """ id, nos ayuda a detectar  """ 
+        cursoID.execute('SELECT * FROM tbalbums WHERE id= %s', (id))
+        """ consultaId = cursoID.fetchall() """
+        consultaId = cursoID.fetchone()
+        return render_template('editarAlbum.html', album = consultaId)
+
+@app.route('/actualizar/<id>', methods =["POST"])
+def actualizar(id):
+
+
 @app.route('/eliminar')
 def eliminar():
+    """ cursoID = mysql.connection.cursor() """ 
     return "se eliminó en la BD "
 
 #Ejecución del servidor en el puerto 5000 
