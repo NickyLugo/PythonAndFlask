@@ -101,7 +101,27 @@ def editar(id):
 
 @app.route('/actualizar/<id>', methods =["POST"])
 def actualizar(id):
+    if request.method == 'POST':
+        
+         #Pasamos a variables el contenido de los input, les ponemos una "var" de variable
+        varTitulo = request.form['txtTitulo']
+        varArtista = request.form['txtArtista']
+        varAnio = request.form['txtAnio']
+        print(varTitulo, varArtista, varAnio)
 
+        #Objeto "CS" de tipo cursor, se va a declarar
+        curAct = mysql.connection.cursor() 
+        
+        #dos parametros el primero es el insert de los datos y el segundo parametro son las variables
+        curAct.execute('UPDATE tbalbums set titulo = %s, artista = %s, anio = %s WHERE id = %s', (varTitulo, varArtista, varAnio, id))
+
+        #Le decimos a mySQL que queremos hacer una confirmación del cambio
+        mysql.connection.commit()
+        #se ocupará para que se pueda mandar el mensaje que informa al usuario que quedó guardado.
+
+    flash('El album fue actualizado correctamente amig@'+' '+'título: '+varTitulo)
+    #se ocupará para que una vez que guardemos nos regrese al formulario
+    return redirect(url_for('index'))
 
 @app.route('/eliminar')
 def eliminar():
