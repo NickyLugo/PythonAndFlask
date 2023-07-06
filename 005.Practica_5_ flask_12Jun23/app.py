@@ -123,10 +123,34 @@ def actualizar(id):
     #se ocupará para que una vez que guardemos nos regrese al formulario
     return redirect(url_for('index'))
 
-@app.route('/eliminar')
-def eliminar():
-    """ cursoID = mysql.connection.cursor() """ 
-    return "se eliminó en la BD "
+@app.route('/delete/<id>')
+def delete(id):
+        cursoID = mysql.connection.cursor()
+        """ cursoID.execute('SELECT * FROM tbalbums WHERE id= %s', (id,)) """
+        """ id, nos ayuda a detectar el registro correcto a eliminar """ 
+        cursoID.execute('SELECT * FROM tbalbums WHERE id= %s', (id))
+        """ consultaId = cursoID.fetchall() """
+        consultaId = cursoID.fetchone()
+        return render_template('eliminarAlbum.html', album = consultaId)
+
+@app.route('/eliminar/<id>', methods =["POST"])
+def eliminar(id):
+    if request.method == 'POST':
+        
+        varTitulo = request.form['txtTitulo']
+        #Objeto "CS" de tipo cursor, se va a declarar
+        curDel = mysql.connection.cursor() 
+        
+        #dos parametros el primero es el insert de los datos y el segundo parametro son las variables
+        curDel.execute('DELETE from tbalbums WHERE id = %s', (id,))
+
+        #Le decimos a mySQL que queremos hacer una confirmación del cambio
+        mysql.connection.commit()
+        #se ocupará para que se pueda mandar el mensaje que informa al usuario que quedó guardado.
+
+    flash('El album fue eliminado correctamente amig@'+' '+'título: '+varTitulo)
+    #se ocupará para que una vez que guardemos nos regrese al formulario
+    return redirect(url_for('index'))
 
 #Ejecución del servidor en el puerto 5000 
 if __name__ =='__main__':

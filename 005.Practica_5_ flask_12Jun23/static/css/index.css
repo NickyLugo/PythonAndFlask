@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap');
+*
+{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+body
+{
+    padding-left: 300px;
+    font-size: 20px;
+    font: bold;
+    align-items: center;
+    min-height: 90vh;
+    background: url("../img/imgAlbum001.jpg") no-repeat, center top;
+    background-size: cover;
+    background-color: #012a4f; /* Adjust the color to achieve desired greyscale effect */
+    background-blend-mode: luminosity;
+    height: 100vh;
+    /* font-weight: 400; */
+    color: white;
+    text-shadow: -1px -1px 0 red, 1px -1px 0 red, -1px 1px 0 red, 1px 1px 0 red;
+}
+
+.flashed-messages {
+    color: red;
+    font-size: 16px;
+    font: thin;
+    text-shadow: none;
+  }
+
+.button {
+    font-weight: bold;
+    width: 150px;
+    margin: 5px 5px;
+    background: none;
+    /* background: linear-gradient(135deg, #14e7e7, #b237e3); */
+  }
+
+  .button:hover {
+    font-size: 22px;
+    text-shadow: -1px -1px 0 white, 1px -1px 0   white, -1px 1px 0   white, 1px 1px 0  white;
+    background: linear-gradient(135deg, #5fe9e4, rgba(186, 70, 224, 0.8));
+  }
+
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  td {
+    padding: 0px 3px; /* Add space between columns by adjusting the padding */
+  }
+

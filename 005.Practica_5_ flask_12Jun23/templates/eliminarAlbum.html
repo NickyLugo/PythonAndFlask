@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<!-- <html lang="en"> -->
+<html></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <title>Eliminar Album</title>
+    <br>
+    <br>
+    <h2>¿Éstas seguro que deseas borrar éste registro?</h2>
+</head>
+<body>
+
+    <h1>Album a eliminar</h1>
+    <br>
+    <br>
+    <form action="/eliminar/{{album.0}}" method="POST">
+        <input type="text" name="txtTitulo" value="{{album.1}}" readonly>
+        <input type="text" name="txtArtista" value="{{album.2}}" readonly>
+        <input type="number" name="txtAnio" value="{{album.3}}" readonly>
+
+        <!-- Para evitar que no tenga funcionalidad, agregamos el tipo de botón = submit -->
+        <button type="submit">Eliminar registro</button>
+    </form>
+    <form action="/">
+        <button type="submit">Regresar a main</button>
+    </form>
+</body>
+</html>

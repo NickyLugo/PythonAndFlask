@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
     <title>CRUD Albums</title>
 </head>
 <body>
@@ -12,23 +13,25 @@
     <br>
     <h1>Gestión de albums</h1>
     <br>
-    <!-- Código de Jinja, desde una lista mensajes -->
-    {% with mensajes = get_flashed_messages() %}
-    <!-- Boolean, solo queremos saber si hay mensajes -->
-        {% if mensajes %}
-            {%for msj in mensajes%}
-            <!-- ECO, muy similar a como se usa blade -->
-                <h3>{{msj}}</h3>
-            {%endfor%}
-        {% endif %}
-    {% endwith %}
+        <div class="flashed-messages">
+            <!-- Código de Jinja, desde una lista mensajes -->
+            {% with mensajes = get_flashed_messages() %}
+            <!-- Boolean, solo queremos saber si hay mensajes -->
+                {% if mensajes %}
+                    {%for msj in mensajes%}
+                    <!-- ECO, muy similar a como se usa blade -->
+                        <h3>{{msj}}</h3>
+                    {%endfor%}
+                {% endif %}
+            {% endwith %}
+        </div> 
     <br>
     <!-- Action pendiente -->
     <!-- ve a la ruta y ¿Por donde se va a enviar? por el método POST, se define -->
     <form action="/guardar" method="POST">
-        <input type="text" name="txtTitulo" placeholder="Escribe el título del album">
-        <input type="text" name="txtArtista" placeholder="Escribe el artista">
-        <input type="number" name="txtAnio" placeholder="Escribe el año">
+        <input type="text" name="txtTitulo" placeholder=" Título del album">
+        <input type="text" name="txtArtista" placeholder=" Escribe el artista">
+        <input type="number" name="txtAnio" placeholder=" Escribe el año">
 
         <!-- Para evitar que no tenga funcionalidad, agregamos el tipo de botón = submit -->
         <button type="submit">Guardar</button>
@@ -53,8 +56,10 @@
                     <td>{{album.2}}</td>
                     <td>{{album.3}}</td>
                     <td>
+                    <button class="Bottones button">
                         <a href=/editar/{{album.0}}> Editar </a>
-                        <a href=/eliminar> Borrar </a>
+                        <a href=/delete/{{album.0}}> Borrar </a>
+                    </button>
                     </td>
                 </tr>
             {%endfor%}
