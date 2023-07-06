@@ -109,7 +109,7 @@ def actualizar(id):
         varAnio = request.form['txtAnio']
         print(varTitulo, varArtista, varAnio)
 
-        #Objeto "CS" de tipo cursor, se va a declarar
+        #Objeto "curAct" de tipo cursor, se va a declarar
         curAct = mysql.connection.cursor() 
         
         #dos parametros el primero es el insert de los datos y el segundo parametro son las variables
