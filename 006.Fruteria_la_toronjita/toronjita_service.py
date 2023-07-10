@@ -24,6 +24,7 @@ mysql = MySQL(app)
 #Declaración de la inicialización de las rutas. Ésta le pertenece a http://localhost:5000
 #Ruta index es la ruta principal
 #El archivo principal de las interfaces debe tener el 'index'
+
 @app.route('/')
 def index():
     #return "Hola mundo Flask"
@@ -35,15 +36,17 @@ def index():
     #print(conFrutas)
     return render_template('index.html', frutasStock = conFrutas)
 
-'''
-@app.route('/otra')
-def index2():
-    #return "Hola mundo Flask"
-    return render_template('index.html')
 
-'''
+""" @app.route('/buscar-por-nombre', methods=['POST'])
+def buscarPorNombre():
+    if request.method == 'POST':
+            #return "Hola mundo Flask"
+        return render_template('index.html') """
+
+
 #Método de trabajo POST que trabaja por detrás de lo que ve el usuario
 #Recibe un envío de un formulario RUTA http:localhost:5000/ guardar tipo POST para insert
+
 @app.route('/guardar', methods=['POST'])
 def guardar():
     if request.method == 'POST':
@@ -153,6 +156,28 @@ def eliminar(id):
     flash('El album fue eliminado correctamente amig@'+' '+'título: '+varTitulo)
     #se ocupará para que una vez que guardemos nos regrese al formulario
     return redirect(url_for('index'))
+
+@app.route('/Consulta-por-nombre')
+def consultaPorNombre():
+    consultaCursor= mysql.connection.cursor()
+    consultaCursor.execute('select * from tbfrutas')
+    confruta= consultaCursor.fetchall()
+    print(confruta)
+    return render_template('consulta-por-nombre.html', listafruta = confruta)
+
+@app.route('/ChecarFruta')
+def Consult():
+    return render_template('consultando.html')
+
+@app.route('/Consultandolo', methods=['POST'])
+def consultanombre():
+    Varbuscar= request.form['txtbuscar']
+    print(Varbuscar)
+    CC= mysql.connection.cursor()
+    CC.execute('select * from tbfrutas where fruta LIKE %s', (f'%{Varbuscar}%',))
+    confruta= CC.fetchall()
+    print(confruta)
+    return render_template('consultando.html', listafruta = confruta)
 
 #Ejecución del servidor en el puerto 5000 
 if __name__ =='__main__':

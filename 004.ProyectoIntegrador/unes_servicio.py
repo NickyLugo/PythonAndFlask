@@ -34,6 +34,7 @@ mysql = MySQL(app)
 #Ruta '/' es la ruta principal
 
 #El archivo principal de las interfaces debe tener el 'index'
+
 @app.route('/')
 def iniciarLoginUnes():
     return render_template('login-unes.html')
@@ -116,7 +117,14 @@ def registrarPersona():
     flash('El registro fue existoso.')
     cs.close()
     #se ocupará para que una vez que guardemos nos regrese al formulario", registrarPaciente es el nombre del método
-    return redirect(url_for('registrarPersona'))
+    """ return redirect(url_for('registrarPersona')) """
+    return redirect(url_for('iniciarLoginUnes'))
+
+@app.route('/pantalla-principal', methods=['POST'])
+def elegirDesdeMain():
+    """ if request.method == 'POST': """
+
+    return redirect(url_for('iniciarLoginUnes'))
 
 #Ejecución del servidor en el puerto 5000 
 if __name__ =='__main__':

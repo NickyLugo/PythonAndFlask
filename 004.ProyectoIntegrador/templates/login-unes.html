@@ -6,8 +6,28 @@
     <!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
     <title>Login UNES</title>
     <link rel="stylesheet" type="text/css" href="{{ url_for('static',filename='css/style-login-unes.css')}}">
+ <!--    <br>
+    Código de Jinja, desde una lista mensajes
+    {% with mensajes = get_flashed_messages() %}
+         Boolean, solo queremos saber si hay mensajes
+        {% if mensajes %}
+            {%for msj in mensajes%}
+             ECO, muy similar a como se usa blade
+                <center><h4 style="color: red;">{{msj}}</h4></center>
+            {%endfor%}
+        {% endif %}
+    {% endwith %}
+    <br> -->
+    <div class="flash-container">
+        {% with mensajes = get_flashed_messages() %}
+          {% if mensajes %}
+            {% for msj in mensajes %}
+              <center><h4 style="color: red;">{{ msj }}</h4></center>
+            {% endfor %}
+          {% endif %}
+        {% endwith %}
+    </div>
 </head>
-
 <body>
     <div class = "box">
         <span class ="borderLine"></span>

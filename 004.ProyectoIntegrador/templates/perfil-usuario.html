@@ -16,7 +16,12 @@
       <div class="profile-details">
         <h2>Nombre de Usuario</h2>
         <p>Dirección: <span contenteditable="true">Dirección del usuario</span></p>
-        <p>Teléfono: <span contenteditable="true">Teléfono del usuario</span></p>
+        <p>Perfil de registro <span contenteditable="true"></span></p>
+        <select >
+          <option disabled selected>Seleccione</option>
+          <option>Chofer</option>
+          <option>Pasajero</option>
+      </select>
         <p>Score: <span class="score" readonly>Score del usuario</span></p>
       </div>
     </div>
@@ -27,6 +32,9 @@
     </div>
     <div class="button-container" formaction="pantalla-principal" formmethod="POST">
       <button class="red-button"> Actualizar</button>
+    </div>
+    <div class="button-container" formaction="pantalla-principal" formmethod="POST">
+      <button class="red-button"> Guardar</button>
     </div>
   </div>
   <script src="script.js"></script>

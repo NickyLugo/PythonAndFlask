@@ -10,3 +10,4 @@ CREATE TABLE `tb_persona` (
   `telefono` INT NOT NULL,
   PRIMARY KEY (id_persona)
 );
+
