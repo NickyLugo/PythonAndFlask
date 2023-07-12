@@ -37,35 +37,70 @@ mysql = MySQL(app)
 
 @app.route('/')
 def iniciarLoginUnes():
-    return render_template('login-unes.html')
+    return render_template('a-login-unes.html')
 
 @app.route('/registro-personas-unes')
 def iniciarRegistroPersonaUnes():
-    return render_template('alta-persona.html')
+    return render_template('b-registro-persona.html')
 
 @app.route('/botones-chofer-o-pasajero')
 def iniciarChoferOPasajeroUnes():
-    return render_template('botones-chofer-o-pasajero.html')
+    return render_template('c-botones-chofer-o-pasajero.html')
 
 @app.route('/pantalla-principal')
 def iniciarPantallaPrincipalUnes():
-    return render_template('pantalla-principal.html')
+    return render_template('d-pantalla-principal.html')
 
 @app.route('/buscar-viaje')
 def iniciarBuscarViajeUnes():
-    return render_template('buscar-viaje.html')
+    return render_template('e-buscar-viaje.html')
 
 @app.route('/registro-vehiculo-unes')
 def iniciarRegistroVehiculoUnes():
-    return render_template('registro-vehiculo.html')
+    return render_template('f-registro-vehiculo.html')
 
 @app.route('/publicar-viaje')
 def iniciarPublicarViajeUnes():
-    return render_template('publicar-viaje.html')
+    return render_template('g-publicar-viaje.html')
 
 @app.route('/mi-perfil')
 def iniciarMiPerfil():
-    return render_template('perfil-usuario.html')
+    return render_template('h-perfil-usuario.html')
+
+
+'''
+@app.route('/', methods=['POST'])
+def LoginUnes():
+    if request.method == 'POST':
+
+        #Pasamos a variables el contenido de los input, les ponemos una "v" de variable
+        vUser = request.form["txtUser"]
+        vPassword = request.form['txtContrasena']
+        
+        print("Los datos recogidos desde front son : {}, {}".format(vUser, vPassword))
+
+        #Objeto "cs" de tipo cursor, se va a declarar
+        cs = mysql.connection.cursor()
+        
+        #cs.execute('INSERT INTO tb_login(nombre_usuario, contrasena) values(%s, %s)',(vUser, vPassword))
+
+        #generar query para db_unes_s181.tb_login
+        vQuery = "INSERT INTO {}.tb_login (nombre_usuario, contrasena) VALUES(\'{}\',\'{}\')".format(esquema, vUser, vPassword)
+        print("El query generado es: {}".format(vQuery))
+        cs.execute(vQuery)
+
+        #Le decimos a mySQL que queremos hacer una confirmación del cambio
+        # al menos debe haber un commit
+        mysql.connection.commit()
+
+    #se ocupará para que se pueda mandar el mensaje que informa al usuario que quedó guardado.
+    #se utiliza session.pop('_flashes', None) para borrar los mensajes enviados previamente con flash, esto dado que se guardan en la session
+    session.pop('_flashes', None)
+    flash('El registro fue existoso.')
+    cs.close()
+    #se ocupará para que una vez que guardemos nos regrese al formulario", registrarPaciente es el nombre del método
+    return redirect(url_for('iniciarLoginUnes'))
+    '''
 
 
 #Método de trabajo POST que trabaja por detrás de lo que ve el usuario

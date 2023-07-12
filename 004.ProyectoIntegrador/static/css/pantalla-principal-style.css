@@ -3,8 +3,11 @@ body
 {
     background: url("../img/imAuto10.jpg") no-repeat, center top;
     background-size: cover;
+    background-color: #446f94; /* Adjust the color to achieve desired greyscale effect */
+    background-blend-mode: luminosity;
     font-size: 35px;
-    color: navy;
+    font: bold;
+    color: black;
 }
 .buttons {
     display: flex;
@@ -31,6 +34,7 @@ body
   body {
     margin: 0;
     padding: 0;
+    width: 400px;
   }
   
   h1, p {

@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-      <br>
+        <br>
         <!-- Código de Jinja, desde una lista mensajes -->
         {% with mensajes = get_flashed_messages() %}
         <!-- Boolean, solo queremos saber si hay mensajes -->
@@ -68,6 +68,11 @@
         <input type="submit" formaction="/registro-personas-unes" formmethod="POST"  value="Registro nuevo">
       </div>
 
+      <div class="button">
+        <button  type="submit" formaction="/botones-chofer-o-pasajero" formnovalidate>
+          Siguiente
+        </button>
+      </div>
   </form>
 </body>
 </html>

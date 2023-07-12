@@ -23,6 +23,7 @@ body
     background: url("../img/imAuto9.jpg") no-repeat, center top;
     background-size: cover;
     height: 100vh;
+    color: white
 }
 .box
 {
@@ -41,7 +42,7 @@ body
     left: -50%;
     width: 380px;
     height: 320px;
-    background: linear-gradient(0deg, transparent, transparent, #092dfb, #092dfb, #092dfb);
+/*     background: linear-gradient(0deg, transparent, transparent, #092dfb, #092dfb, #092dfb); */
     z-index: 1;
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
@@ -54,7 +55,7 @@ body
     left: -50%;
     width: 380px;
     height: 320px;
-    background: linear-gradient(0deg, transparent, transparent, #092dfb, #092dfb, #092dfb);
+/*     background: linear-gradient(0deg, transparent, transparent, #092dfb, #092dfb, #092dfb); */
     z-index: 1;
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
@@ -74,7 +75,7 @@ body
     left: -50%;
     width: 380px;
     height: 320px;
-    background: linear-gradient(0deg, transparent, transparent, #08f7ef, #08f7ef, #08f7ef);
+/*     background: linear-gradient(0deg, transparent, transparent, #08f7ef, #08f7ef, #08f7ef); */
     z-index: 1;
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
@@ -88,7 +89,7 @@ body
     left: -50%;
     width: 380px;
     height: 320px;
-    background: linear-gradient(0deg, transparent, transparent, #08f7ef, #08f7ef, #08f7ef);
+/*     background: linear-gradient(0deg, transparent, transparent, #08f7ef, #08f7ef, #08f7ef); */
     z-index: 1;
     transform-origin: bottom right;
     animation: animate 6s linear infinite;
@@ -128,6 +129,7 @@ body
     position:relative;
     width: 300px;
     margin-top: 15px;
+    color: white;
 }
 .box form .inputBox input
 {
