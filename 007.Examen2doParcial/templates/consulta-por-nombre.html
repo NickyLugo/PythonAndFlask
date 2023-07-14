@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Consulta de Flores</title>
+    <link rel="stylesheet" href="../static/css/consulta.css">
+</head>
+<body>
+    <h1>Consulta de inventario</h1>
+    <br>
+    <br>
+    <form action=/>
+        <button href=> Regresar </button> 
+    </form>
+    <form action=/ChecarFlor>
+        <button href=> Consultar por nombre </button> 
+        <br>
+    {% with mensajes= get_flashed_messages()%}
+        {%if mensajes%}
+            {%for msj in mensajes%}
+            <h3> {{msj}} </h3>
+            {% endfor %}
+        {% endif %}
+    {% endwith%}
+    </form>
+    <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Flor</th>
+            <th>Stock</th>
+            <th>Precio</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for flo in listaflor%}
+                <tr>
+                    <td>{{flo.0}}</td>
+                    <td>{{flo.1}}</td>
+                    <td>{{flo.2}}</td>
+                    <td>{{flo.3}}</td>
+                    <td>
+                        <a href=/editar/{{flo.0}} > Editar</a>
+                        <a href=/eliminar/{{flo.0}}> Borrar</a>
+                    </td>
+                </tr>
+            {%endfor%}
+        </tbody>
+      </table>
+</body>
+</html>

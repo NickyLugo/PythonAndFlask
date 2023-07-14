@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<!-- <html lang="en"> -->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <title>CRUD Florería 'Examen 2do parcial'</title>
+</head>
+<body>
+    <!-- espacios <br> -->
+    <br>
+    <br>
+    <h1>Inventario de flores</h1>
+    <br>
+        <div class="flashed-messages">
+            <!-- Código de Jinja, desde una lista mensajes -->
+            {% with mensajes = get_flashed_messages() %}
+            <!-- Boolean, solo queremos saber si hay mensajes -->
+                {% if mensajes %}
+                    {%for msj in mensajes%}
+                    <!-- ECO, muy similar a como se usa blade -->
+                        <h3>{{msj}}</h3>
+                    {%endfor%}
+                {% endif %}
+            {% endwith %}
+        </div> 
+    <br>
+    <!-- Action pendiente -->
+    <!-- ve a la ruta y ¿Por donde se va a enviar? por el método POST, se define -->
+    <form action="/guardar" method="POST">
+        <input type="text" name="txtFlor" placeholder=" Nombre flor">
+        <input type="number" name="txtStock" placeholder=" Stock en piezas">
+        <input type="number" name="txtPrecio" placeholder=" Precio">
+
+        <!-- Para evitar que no tenga funcionalidad, agregamos el tipo de botón = submit -->
+        <button class="guarda-consulta">
+            <button type="submit">Guardar</button>
+        </button>
+    </form>
+    <form action="/Consulta-por-nombre">
+        <button class="buscar-por-nombre">
+            <button type="submit">Consultar por nombre</button>
+        </button>
+    </form>
+<br>
+<br>
+    <h1>Flores en stock</h1>
+    <table>
+        <thead>
+            <tr> <!-- para filas -->
+                <td> Id: </td> <!-- para columnas -->
+                <td> Nombre: </td>
+                <td> Cantidad: </td>
+                <td> Precio: </td>
+            </tr>
+        </thead>
+        <tbody>
+            {%for flor in floresStock%}
+                <tr>
+                    <td>{{flor.0}}</td>
+                    <td>{{flor.1}}</td>
+                    <td>{{flor.2}}</td>
+                    <td>{{flor.3}}</td>
+                    <td>
+                    <button class="Bottones button">
+                        <a href=/editar/{{flor.0}}> Editar </a>
+                        <a href=/delete/{{flor.0}}> Borrar </a>
+                    </button>
+                    </td>
+                </tr>
+            {%endfor%}
+        </tbody>
+    </table>
+</body>
+</html>

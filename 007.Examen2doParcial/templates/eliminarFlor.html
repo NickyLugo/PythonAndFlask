@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<!-- <html lang="en"> -->
+<html></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <title>Eliminar flores</title>
+    <br>
+    <br>
+    <h2>¿Éstas seguro que deseas borrar éste registro?</h2>
+</head>
+<body>
+
+    <h1>Flor a eliminar</h1>
+    <br>
+    <br>
+    <form action="/eliminar/{{flor.0}}" method="POST">
+        <input type="text" name="txtFlor" value="{{flor.1}}" readonly>
+        <input type="number" name="txtStock" value="{{flor.2}}" readonly>
+        <input type="number" name="txtPrecio" value="{{flor.3}}" readonly>
+
+
+        <!-- Para evitar que no tenga funcionalidad, agregamos el tipo de botón = submit -->
+        <button type="submit">Eliminar registro</button>
+    </form>
+    <form action="/">
+        <button type="submit">Regresar a main</button>
+    </form>
+</body>
+</html>
