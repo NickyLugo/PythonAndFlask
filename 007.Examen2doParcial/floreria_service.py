@@ -44,7 +44,7 @@ def guardar():
         #Objeto "CS" de tipo cursor, se va a declarar
         CS = mysql.connection.cursor() 
         #dos parametros el primero es el insert de los datos y el segundo parametro son las variables
-        CS.execute('insert into tbflores(flor, stock, precio) values(%s, %s, %s)',(Vflor, Vstock, Vprecio))
+        CS.execute('insert into tbflores(flor, cantidad, precio) values(%s, %s, %s)',(Vflor, Vstock, Vprecio))
 
         #Le decimos a mySQL que queremos hacer una confirmación del cambio
         mysql.connection.commit()
@@ -63,7 +63,7 @@ def guardar():
 def mostrar():
     cs = mysql.connection.cursor() 
 #    cs.execute('SELECT * FROM tbflores')
-    cs.execute("SELECT id, flor, stock, precio FROM tbflores WHERE flor LIKE 'Ros%'")
+    cs.execute("SELECT id, flor, cantidad, precio FROM tbflores WHERE flor LIKE 'Ros%'")
 #    for (id, Flor, Cantidad, Precio) in cs:
 #        print("{}, {}, {} was published on {}".format(id, Titulo, Artista, Anio))
 
@@ -98,7 +98,7 @@ def actualizar(id):
         curAct = mysql.connection.cursor() 
         
         #dos parametros el primero es el insert de los datos y el segundo parametro son las variables
-        curAct.execute('UPDATE tbflores set flor = %s, stock = %s, precio = %s WHERE id = %s', (varFlor, varStock, varPrecio, id))
+        curAct.execute('UPDATE tbflores set flor = %s, cantidad = %s, precio = %s WHERE id = %s', (varFlor, varStock, varPrecio, id))
 
         #Le decimos a mySQL que queremos hacer una confirmación del cambio
         mysql.connection.commit()
@@ -122,7 +122,7 @@ def delete(id):
 def eliminar(id):
     if request.method == 'POST':
         
-        varTitulo = request.form['txtFlor']
+        varNombre = request.form['txtFlor']
         #Objeto "CS" de tipo cursor, se va a declarar
         curDel = mysql.connection.cursor() 
         
@@ -133,7 +133,7 @@ def eliminar(id):
         mysql.connection.commit()
         #se ocupará para que se pueda mandar el mensaje que informa al usuario que quedó guardado.
 
-    flash('El album fue eliminado correctamente amig@'+' '+'título: '+varTitulo)
+    flash('El registro fue eliminado correctamente amigo'+' '+'flor: '+varNombre)
     #se ocupará para que una vez que guardemos nos regrese al formulario
     return redirect(url_for('index'))
 
@@ -141,11 +141,11 @@ def eliminar(id):
 def consultaPorNombre():
     consultaCursor= mysql.connection.cursor()
     consultaCursor.execute('select * from tbflores')
-    confruta= consultaCursor.fetchall()
-    print(confruta)
-    return render_template('consulta-por-nombre.html', listafruta = confruta)
+    conflor= consultaCursor.fetchall()
+    print(conflor)
+    return render_template('consulta-por-nombre.html', listaflor = conflor)
 
-@app.route('/ChecarFruta')
+@app.route('/ChecarFlor')
 def Consult():
     return render_template('consultando.html')
 
@@ -154,10 +154,10 @@ def consultanombre():
     Varbuscar= request.form['txtbuscar']
     print(Varbuscar)
     CC= mysql.connection.cursor()
-    CC.execute('select * from tbfrutas where fruta LIKE %s', (f'%{Varbuscar}%',))
-    confruta= CC.fetchall()
-    print(confruta)
-    return render_template('consultando.html', listafruta = confruta)
+    CC.execute('select * from tbflores where flor LIKE %s', (f'%{Varbuscar}%',))
+    conflor= CC.fetchall()
+    print(conflor)
+    return render_template('consultando.html', listaflor = conflor)
 
 #Ejecución del servidor en el puerto 5000 
 if __name__ =='__main__':
