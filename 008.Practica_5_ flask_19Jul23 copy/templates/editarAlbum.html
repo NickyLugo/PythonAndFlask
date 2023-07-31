@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<!-- <html lang="en"> -->
+<html></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="../static/css/index.css">
+    <title>Editar Album</title>
+</head>
+<body>
+
+    <h1>Album a editar</h1>
+    <br>
+    <br>
+    <form action="/actualizar/{{album.0}}" method="POST">
+        <input type="text" name="txtTitulo" value="{{album.1}}">
+        <input type="text" name="txtArtista" value="{{album.2}}">
+        <input type="number" name="txtAnio" value="{{album.3}}">
+
+        <!-- Para evitar que no tenga funcionalidad, agregamos el tipo de botón = submit -->
+        <button type="submit">Actualizar registro</button>
+    </form>
+</body>
+</html>

@@ -1,51 +1,88 @@
-/* Estilos para los botones */
-body
-{
-    background: url("../img/imAuto10.jpg") no-repeat, center top;
-    background-size: cover;
-    background-color: #446f94; /* Adjust the color to achieve desired greyscale effect */
-    background-blend-mode: luminosity;
-    font-size: 35px;
-    font: bold;
-    color: black;
+/* styles.css */
+
+body {
+  background: url("../img/Unes022.jpg") no-repeat center top;
+  background-size: cover;
+  font-size: 25px;
+  font-weight: bold;
+  color: black;
 }
+
+.buttons1,
+.buttons2,
+.buttons3,
+.buttons4,
+.buttons5 {
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+  margin: 20px;
+  padding: 11px;
+  border: 1px solid transparent; /* Transparent border to avoid shifting on hover */
+  padding: 10px;
+  background-color: #222222;
+  color: #ffa600;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: 'Helvetica', sans-serif;
+  border-radius: 30px;
+  transition: background-color 0.3s, color 0.3s, transform 0.3s; /* Transition effect on hover */
+}
+
+.buttons1:hover,
+.buttons2:hover,
+.buttons3:hover,
+.buttons4:hover,
+.buttons5:hover {
+  background-color: white;
+  color: #222222;
+  transform: scale(1.1); /* Increase size by 10% on hover */
+}
+
 .buttons {
-    display: flex;
-    justify-content: center;
-    padding-bottom: 100px;
-    margin-top: 20px;
-  }
-  
-  .buttons button {
-    margin: 0 10px; /* Margen entre los botones */
-  }
-  
-  /* Estilos para el logo */
-  .logo {
-    position: relative;
-    top: 20px;
-    left: 20px;
-    size: 10%;
-    /* width: 100px; Ajusta el ancho según tus necesidades */
-    /* height: 100px; Ajusta la altura según tus necesidades */
-  }
-  
-  /* Estilos adicionales */
-  body {
-    margin: 0;
-    padding: 0;
-    width: 400px;
-  }
-  
-  h1, p {
-    text-align: center;
-  }
-  
-  .background-image {
-    position: relative;
-    top: 0;
-    left: 0;
-    width: 20%;
-    height: 20%;
-    z-index: -1;
-  }
+  display: flex;
+  justify-content: center;
+  padding-bottom: 100px;
+  margin-top: 20px;
+}
+
+.log {
+  position: center;
+  top: 20px;
+  left: 20px;
+  size: 10%;
+}
+
+.cuerpo {
+  margin: 33px;
+  padding: 33px;
+  width: 400px;
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+  font-family: 'Helvetica', sans-serif;
+}
+
+p {
+  text-align: center;
+  justify-content: center;
+  padding: 12%;
+  margin-top: 20px;
+  color: aliceblue;
+  border: 1px solid #2e528b00;
+  padding: 23px;
+  background-color: #222222;
+  border-radius: 110px;
+  font-family: 'Helvetica', sans-serif;
+}
+
+.background-image {
+  position: back;
+  top: 0;
+  left: 0;
+  width: 20%;
+  height: 20%;
+  z-index: -1;
+}

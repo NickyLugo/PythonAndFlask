@@ -1,54 +1,78 @@
-.container {
-    max-width: 600px;
-    margin: 0 auto;
-    padding: 20px;
+/* CSS for UNES auto compartido */
+
+/* Reset default margin and padding */
+body
+{
+    min-height: 90vh;
+    background: url("../img/Unes021.jpg") no-repeat, center top;
+    background-size: cover;
+    height: 100vh;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+/* Heading styles */
+h1 {
+  padding-left: 50px;
+  margin-top: 20px;
+}
+
+/* Input box styles */
+.input-boxes {
+  padding-left: 25px;
+  display: grid;
+  grid-row-gap: 10px;
+  margin-top: 20px;
+}
+
+input[type="text"],input[type="number"] {
+  padding-left: 25px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 20%;
+}
+
+.buttons {
+  padding-left: 25px;
+  margin-top: 20px;
+  display: inline-block;
+}
+
+.regresar-button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #ccc;
+  cursor: pointer;
+}
+
+input[type="submit"] {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #f09627db;
+  cursor: pointer;
+}
+
+/* Add image to the top right corner */
+body::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  right: 30px;
+  width: 17%;
+  height: 26%;
+  background-image: url("../img/imLogoUnes2.jpg");
+  background-size: cover;
+}
+
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .input-boxes {
+    margin-top: 10px;
   }
-  
-  h2 {
-    text-align: center;
-  }
-  
-  form {
-    margin-top: 20px;
-  }
-  
-  .input-box {
-    margin-bottom: 20px;
-  }
-  
-  .input-box label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 5px;
-  }
-  
-  .input-box input[type="text"] {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .buttons {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px;
-  }
-  
-  .buttons button {
-    margin: 0 10px;
-    padding: 10px 20px;
-    background-color: #4285F4;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-  }
-  
-  .buttons button:hover {
-    background-color: #3367D6;
-  }
-  
-  .buttons button[type="submit"] {
-    background-color: #0F9D58;
-  }
+}
