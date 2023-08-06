@@ -8,23 +8,54 @@ from flask_mysqldb import MySQL
 #Se importa para desmenuzar la fecha 
 from datetime import datetime
 
-#inicialización del APP (servidor)
-app=Flask(__name__)
 
+#inicialización del APP (servidor)
+#app=Flask(__name__)
+
+#01Ago2023 // comentado
+#Libreria para conectar SQL Server con FLask  // comentado
+#import pyodbc
+#try:
+#    connection=pyodbc.connect('DRIVER={SQL Server}; SERVER=LAPTOP-H5L1Q96Q; DATABASE=db_unes_proyecto; UID=dba_NickLugo; PWD=123456')
+#    app.config['SQL_SERVER_URI']={SQLServer};SERVER=LAPTOP-H5L1Q96Q;DATABASE=db_unes_proyecto;UID=dba_NickLugo;PWD=123456'  // comentado
+    
+#    print("Conexión exitosa")
+#except Exception as ex:
+#    print(ex)
+#01Ago2023  // comentado
+
+from flask import Flask
+import pyodbc
+
+app = Flask(__name__)
+
+try:
+    # Uncomment the following line to establish the database connection
+    # Replace 'LAPTOP-H5L1Q96Q', 'db_unes_proyecto', 'dba_NickLugo', and '123456' with your actual credentials
+    app.config['SQL_SERVER_URI'] = 'DRIVER={SQL Server};SERVER=LAPTOP-H5L1Q96Q;DATABASE=db_unes_proyecto'
+#UID=dba_NickLugo;PWD=123456
+    # Test if the connection is successful
+    connection = pyodbc.connect(app.config['SQL_SERVER_URI'])
+    print("Conexión exitosa")
+except Exception as ex:
+    print(ex)
+
+
+#01Ago2023
 # configuración de la conexión a base de datos.
-app.config['MYSQL_HOST']='localhost'
-app.config['MYSQL_USER']='root' 
+ #app.config['MYSQL_HOST']='localhost'
+ #app.config['MYSQL_USER']='root' 
 #Laptop
-app.config['MYSQL_PASSWORD']=''
+ #app.config['MYSQL_PASSWORD']=''
 #Desktop
 #app.config['MYSQL_PASSWORD']='root'
 
-app.config['MYSQL_DB']='db_unes_s181'
-esquema = 'db_unes_s181'
+ #app.config['MYSQL_DB']='db_unes_s181'
+ #esquema = 'db_unes_s181'
 
 #Se agrega para evitar RuntimeError: The session is unavailable because no secret key was set.
 app.secret_key='mysecretkey'
-mysql = MySQL(app)
+    #mysql = MySQL(app)
 
 # si es posible conectarse a dos bases de datos
 # mas que nada cuando se realizan migraciones; conciliaciones de cuentas;
@@ -38,6 +69,7 @@ mysql = MySQL(app)
 @app.route('/')
 def iniciarLoginUnes():
     return render_template('a-login-unes.html')
+
 
 @app.route('/registro-personas-unes')
 def iniciarRegistroPersonaUnes():
@@ -115,11 +147,12 @@ def registrarPersona():
         vFechaNacimiento = request.form['dateFechaNacimiento']
         vCarrera = request.form['txtCarrera']
         vEmail = request.form['txtEmail']
+        vPassword = request.form['txtPassword']
         vTelefono = request.form['numberTelefono']   
 
 
         
-        print("Los datos recogidos desde front son : {}, {}, {}, {}, {}, {}".format(vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vTelefono))
+        print("Los datos recogidos desde front son : {}, {}, {}, {}, {}, {}, {}".format(vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vPassword, vTelefono))
         
         vFechaNacimiento = request.form['dateFechaNacimiento']
         date_object = datetime.strptime(vFechaNacimiento, '%Y-%m-%d')
@@ -130,27 +163,35 @@ def registrarPersona():
         # cursor.execute("INSERT INTO your_table (date_column) VALUES (%s)", (formatted_date,))
         # connection.commit()
 
-        print("Los datos recogidos MODIFICADOS son: {}, {}, {}, {}, {}, {}, {}".format(vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vTelefono))
+        print("Los datos recogidos MODIFICADOS son: {}, {}, {}, {}, {}, {}, {}, {}".format(vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vPassword, vTelefono))
+        
+        #QUERY
+        consulta =pyodbc.connect(app.config['SQL_SERVER_URI'])
+        cursor = consulta.cursor()
+        cursor.execute('EXEC InsertarEnLogin;')
+        cursor.execute('INSERT INTO tb_personas(nombre_Usuario, ape_Paterno, ape_Materno, fecha_Nacimiento, carrera, email, contrasena, telefono) VALUES (?,?,?,?,?,?,?,?)',(vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vPassword, vTelefono))
+        consulta.commit()
+        consulta.close()        
 
         #Objeto "cs" de tipo cursor, se va a declarar
-        cs = mysql.connection.cursor()
+        #MySQL 03AGO2023 cs = mysql.connection.cursor()
         
         #cs.execute('INSERT INTO tb_persona(nombre, apellido_paterno, apellido_materno, fecha_nacimiento, carrera, email, telefono) values(%s, %s, %s, %s, %s, %s, %s)',(vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vTelefono))
 
             #generar query para db_clinica_S181.tb_persona
-        vQuery = "INSERT INTO {}.tb_persona (nombre, apellido_paterno, apellido_materno, fecha_nacimiento, carrera, email, telefono) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'{}\')".format(esquema, vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vTelefono)
-        print("El query generado es: {}".format(vQuery))
-        cs.execute(vQuery)
+        #MySQL 03AGO2023 vQuery = "INSERT INTO {}.tb_persona (nombre, apellido_paterno, apellido_materno, fecha_nacimiento, carrera, email, telefono) VALUES(\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'{}\',\'{}\')".format(esquema, vNombrePersona, vApellidoPaternoPersona, vApellidoMaternoPersona, vFechaNacimiento, vCarrera, vEmail, vTelefono)
+        #MySQL 03AGO2023 print("El query generado es: {}".format(vQuery))
+        #MySQL 03AGO2023 cs.execute(vQuery)
 
         #Le decimos a mySQL que queremos hacer una confirmación del cambio
         # al menos debe haber un commit
-        mysql.connection.commit()
+        #MySQL 03AGO2023 mysql.connection.commit()
 
     #se ocupará para que se pueda mandar el mensaje que informa al usuario que quedó guardado.
     #se utiliza session.pop('_flashes', None) para borrar los mensajes enviados previamente con flash, esto dado que se guardan en la session
     session.pop('_flashes', None)
     flash('El registro fue existoso.')
-    cs.close()
+    #cs.close()
     #se ocupará para que una vez que guardemos nos regrese al formulario", registrarPaciente es el nombre del método
     """ return redirect(url_for('registrarPersona')) """
     return redirect(url_for('iniciarLoginUnes'))
@@ -163,5 +204,5 @@ def elegirDesdeMain():
 
 #Ejecución del servidor en el puerto 5000 
 if __name__ =='__main__':
-    app.run(port=5000)
+    app.run(port=5001)
     #app.run(port=5000, debug = True)

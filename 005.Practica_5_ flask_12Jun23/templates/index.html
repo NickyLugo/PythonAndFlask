@@ -6,18 +6,28 @@
     </div>
         <div class="flashed-messages">
             <!-- Código de Jinja, desde una lista mensajes -->
-            {% with mensajes = get_flashed_messages() %}
+            
+        </div>
+   
+    <div class="container text-center">        
+        {% with mensajes = get_flashed_messages() %}
             <!-- Boolean, solo queremos saber si hay mensajes -->
                 {% if mensajes %}
                     {%for msj in mensajes%}
                     <!-- ECO, muy similar a como se usa blade -->
-                        <h3>{{msj}}</h3>
+                        <!-- <h3>{{msj}}</h3> -->
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            <strong>{{msj}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <script> Swal.fire(
+                            'Good job!',
+                            'You clicked the button!',
+                            'success'
+                          )</script>
                     {%endfor%}
                 {% endif %}
             {% endwith %}
-        </div>
-   
-    <div class="container text-center">        
         <div class="row">
             <div class="col-md-5">
                 <div class="card card-body mb-5"> <!-- mb-5 "margin bottom de 5 espacios" -->
@@ -42,38 +52,41 @@
             </div>
             <div class="col-md-7">
                 <h1>Albums guardados</h1>
-                <table class="table table-warning">
-                    <thead>
-                        <tr> <!-- para filas -->
-                            <td> Id: </td> <!-- para columnas -->
-                            <td> Album: </td>
-                            <td> Artista: </td>
-                            <td> Año publicación: </td>
-                            <td> Acciones: </td>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {%for album in albumesRecords%}
-                            <tr>
-                                <td>{{album.0}}</td>
-                                <td>{{album.1}}</td>
-                                <td>{{album.2}}</td>
-                                <td>{{album.3}}</td>
-                                <td>
-                                
-                                    <!--En lugar de "borrar", ponemos <i class="bi bi-trash3"></i> -->
-                                    <a href=/editar/{{album.0}} class="btn btn-warning"> <i class="bi bi-pencil-square"></i> </a>
-                                
-                                <!-- <button class="Bottones button"> -->
-                                    <a href=/delete/{{album.0}} class="btn btn-danger"> <i class="bi bi-trash3"></i> </a>
-                                <!-- </button> -->
-                                </td>
+                <div style="max-height: 300px; overflow-y: scroll;">
+                    <table class="table table-warning">
+                        <thead>
+                            <tr> <!-- para filas -->
+                                <td> Id: </td> <!-- para columnas -->
+                                <td> Album: </td>
+                                <td> Artista: </td>
+                                <td> Año publicación: </td>
+                                <td> Acciones: </td>
                             </tr>
-                        {%endfor%}
-                    </tbody>
-                </table>
-            </div>  <!--Éste cierra col-md-7-->
+                        </thead>
+                        <tbody>
+                            {%for album in albumesRecords%}
+                                <tr>
+                                    <td>{{album.0}}</td>
+                                    <td>{{album.1}}</td>
+                                    <td>{{album.2}}</td>
+                                    <td>{{album.3}}</td>
+                                    <td>
+                                    
+                                        <!--En lugar de "borrar", ponemos <i class="bi bi-trash3"></i> -->
+                                        <a href=/editar/{{album.0}} class="btn btn-warning"> <i class="bi bi-pencil-square"></i> </a>
+                                    
+                                    <!-- <button class="Bottones button"> -->
+                                        <a href=/delete/{{album.0}} class="btn btn-danger"> <i class="bi bi-trash3"></i> </a>
+                                    <!-- </button> -->
+                                    </td>
+                                </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+                            </div>  <!--Éste cierra col-md-7-->
         </div>  <!--Éste cierra row-->
         <!-- ve a la ruta y ¿Por donde se va a enviar? por el método POST, se define -->
-        </div>  <!--Éste cierra container-->
+    </div>  <!--Éste cierra container-->
+        
     {% endblock %}
