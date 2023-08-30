@@ -1,4 +1,98 @@
-<!DOCTYPE html>
+{% extends 'plantilla2.html' %}
+
+{% block body %}
+
+<style>
+  /* CSS for Registro de Vehículo */
+
+/* Reset default margin and padding */
+body
+{
+    display: flex;
+    padding-top: none;
+    justify-content: center;
+    align-items: center;
+    min-height: 90vh;
+    background: url("../img/Unes015.jpg") no-repeat, center top;
+    background-size: cover;
+    height: 100vh;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+
+/* Container styles */
+.container {
+  max-width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+/* Heading styles */
+h2 {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Form styles */
+form {
+  display: grid;
+  grid-row-gap: 10px;
+}
+
+/* Input box styles */
+.input-box {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  align-items: center;
+}
+
+label {
+  margin-right: 10px;
+}
+
+input[type="text"] {
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 100%;
+}
+
+/* Buttons styles */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(3, max-content);
+  grid-column-gap: 10px;
+  margin-top: 20px;
+}
+
+button {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  background-color: #4caf50;
+  cursor: pointer;
+}
+
+button[type="button"] {
+  background-color: #ccc;
+}
+
+button[type="submit"] {
+  background-color: #008CBA;
+}
+
+/* Responsive styles */
+@media screen and (max-width: 600px) {
+  .container {
+    max-width: 300px;
+  }
+}
+</style>
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +101,7 @@
   <form action="/registro-vehiculo-unes" method="GET"></form>
   <link rel="stylesheet" href="../static/css/style-registrar-vehiculo.css">
 </head>
-<body>
+<body> -->
   <div class="container">
     <h2>Registro de Vehículo</h2>
     <form>
@@ -44,5 +138,6 @@
   </div>
   
   <script src="script.js"></script>
-</body>
-</html>
+  {% endblock %}
+<!-- </body>
+</html> -->

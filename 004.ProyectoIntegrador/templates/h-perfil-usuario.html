@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+{% extends 'plantilla2.html' %}
+{% block body %}
+
+<!-- <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -7,7 +10,7 @@
   <form action="/mi-perfil" method="GET"></form>
   <link rel="stylesheet" href="../static/css/style-perfil-usuario.css">
 </head>
-<body>
+<body> -->
   <div class="container">
     <div class="profile">
       <div class="profile-photo">
@@ -27,7 +30,7 @@
     </div>
     <div class="document-upload">
       <h3>Cargar documentos</h3>
-      <input type="file" accept="image/jpeg" multiple>
+     <!--  <input type="file" accept="image/jpeg" multiple> -->
       <input type="file" accept="application/pdf">
     </div>
     <div class="button-container" formaction="pantalla-principal" formmethod="POST">
@@ -38,5 +41,6 @@
     </div>
   </div>
   <script src="script.js"></script>
-</body>
-</html>
+  {% endblock %}
+<!-- </body>
+</html> -->

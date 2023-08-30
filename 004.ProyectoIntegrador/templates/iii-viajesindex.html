@@ -1,0 +1,94 @@
+{% extends 'plantilla.html' %}
+{% block body %}
+
+    <div class="mt-5 mb-5">
+        <h1 class="display-1 text-center">Gestión de viajes</h1>
+    </div>
+        <div class="flashed-messages">
+            <!-- Código de Jinja, desde una lista mensajes -->
+            
+        </div>
+   
+    <div class="container text-center">        
+        {% with mensajes = get_flashed_messages() %}
+            <!-- Boolean, solo queremos saber si hay mensajes -->
+                {% if mensajes %}
+                    {%for msj in mensajes%}
+                    <!-- ECO, muy similar a como se usa blade -->
+                        <!-- <h3>{{msj}}</h3> -->
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            <strong>{{msj}}</strong>
+                            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                        </div>
+                        <script> Swal.fire(
+                            'Good job!',
+                            'You clicked the button!',
+                            'success'
+                          )</script>
+                    {%endfor%}
+                {% endif %}
+            {% endwith %}
+        <div class="row">
+            <div class="col-md-5">
+                <div class="card card-body mb-5"> <!-- mb-5 "margin bottom de 5 espacios" -->
+                    <h1> Nuevo viaje</h1>
+                    <form action="/guardar" method="POST">
+
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="txtRuta" placeholder=" nueva ruta" required>
+                        </div>
+                        <div class="mb-3">
+                            <input type="text" class="form-control" name="txtChofer" placeholder=" chofer " required>    
+                        </div>
+                        <div class="mb-3">
+                            <input type="number" class="form-control" name="txtAsientos" placeholder=" asientos " required>    
+                        </div>
+
+                
+                        <!-- Para evitar que no tenga funcionalidad, agregamos el tipo de botón = submit -->
+                        <button type="submit" class="btn btn-outline-info">Guardar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="col-md-7">
+                <h1>Viajes guardados</h1>
+                <div style="max-height: 300px; overflow-y: scroll;">
+                    <table class="table table-warning">
+                        <thead>
+                            <tr> <!-- para filas -->
+                                <td> Id: </td> <!-- para columnas -->
+                                <td> Ruta: </td>
+                                <td> Chofer: </td>
+                                <td> Asientos: </td>
+                                <td> Acciones: </td>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {%for viaje in viajes%}
+                                <tr>
+                                    <td>{{viaje.0}}</td>
+                                    <td>{{viaje.1}}</td>
+                                    <td>{{viaje.2}}</td>
+                                    <td>{{viaje.3}}</td>
+                                    <td>
+                                    
+                                        <!--En lugar de "borrar", ponemos <i class="bi bi-trash3"></i> -->
+                                        <a href=/editar/{{viaje.0}} class="btn btn-warning"> <i class="bi bi-pencil-square"></i> </a>
+                                    
+                                    <!-- <button class="Bottones button"> -->
+                                        <a href=/delete/{{viaje.0}} class="btn btn-danger"> <i class="bi bi-trash3"></i> </a>
+                                    <!-- </button> -->
+                                    </td>
+                                </tr>
+                            {%endfor%}
+                        </tbody>
+                    </table>
+                </div>
+            </div>  <!--Éste cierra col-md-7-->
+        </div>  <!--Éste cierra row-->
+        <!-- ve a la ruta y ¿Por donde se va a enviar? por el método POST, se define -->
+    </div>  <!--Éste cierra container-->
+        
+    {% endblock %}
+
+    

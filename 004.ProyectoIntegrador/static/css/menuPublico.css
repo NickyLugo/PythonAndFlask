@@ -1,0 +1,75 @@
+body {
+    background: url("../Static/fondos.png") no-repeat center top;
+    background-size: cover;
+    font-size: 25px;
+    font-weight: bold;
+    color: black;
+  }
+.navbar {
+    
+   
+    background-color: #333;
+    }
+    
+    /* Estilo para el enlace del logotipo */
+    .navbar-brand {
+        font-size: 24px;
+    }
+    
+    /* Estilo para los enlaces de la barra de navegación */
+    .navbar-nav .nav-link {
+        color: #fff;
+        font-size: 18px;
+        
+       
+    padding: 10px 15px;
+    }
+    
+    /* Estilo para los enlaces al pasar el mouse por encima */
+    .navbar-nav .nav-link:hover {
+        
+       
+    background-color: #555;
+    }
+
+.image-logo
+{
+    height: 40px;
+}
+.container {
+    display: flex;
+    background-image: url('../Static/Fondo1.jpg');
+    background-size: cover;
+}
+
+.columna1 {
+    flex: 1;
+    text-align: justify;
+    padding: 20px;
+    color: white;
+
+}
+.columna2 {
+    flex: 1;
+    text-align: justify;
+    padding: 20px;
+    color: white;
+
+}
+.columna3 {
+    flex: 1;
+    text-align: justify;
+    padding: 20px;
+    color: white;
+
+}
+img {
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
+}
+
+p {
+    margin-top: 10px;
+    font-size: 16px;
+}
